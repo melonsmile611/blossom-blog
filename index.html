@@ -17,9 +17,7 @@
     --leaf: #6a8c5b;
     --leaf-soft: #b8d4a8;
     --earth: #3d3232;
-    --earth-light: #6b5c5c;
     --cream: #fdfbf7;
-    --warm-bg: #faf8f4;
     --text: #42363a;
     --text-light: #8a7a80;
   }
@@ -57,6 +55,7 @@
     font-weight: 600;
     color: var(--crocus);
     text-decoration: none;
+    cursor: pointer;
   }
   .nav-brand span { color: var(--saffron); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
@@ -67,6 +66,7 @@
     font-size: 0.78rem;
     letter-spacing: 0.08em;
     transition: color 0.3s;
+    cursor: pointer;
   }
   .nav-links a:hover { color: var(--crocus); }
 
@@ -86,7 +86,7 @@
     animation: floatPetal linear infinite;
     pointer-events: none;
   }
-  .petal-float:nth-child(1) { width: 18px; height: 24px; background: rgba(167,139,202,0.15); left: 10%; animation-duration: 18s; animation-delay: 0s; }
+  .petal-float:nth-child(1) { width: 18px; height: 24px; background: rgba(167,139,202,0.15); left: 10%; animation-duration: 18s; }
   .petal-float:nth-child(2) { width: 14px; height: 20px; background: rgba(123,94,167,0.1); left: 25%; animation-duration: 22s; animation-delay: 3s; }
   .petal-float:nth-child(3) { width: 20px; height: 26px; background: rgba(232,168,56,0.1); left: 55%; animation-duration: 20s; animation-delay: 6s; }
   .petal-float:nth-child(4) { width: 12px; height: 18px; background: rgba(167,139,202,0.12); left: 75%; animation-duration: 24s; animation-delay: 2s; }
@@ -101,16 +101,14 @@
 
   .hero-botanical {
     position: absolute;
-    right: -5%;
-    top: 50%;
+    right: -5%; top: 50%;
     transform: translateY(-50%);
     width: clamp(300px, 45vw, 550px);
     height: clamp(300px, 45vw, 550px);
     border-radius: 50%;
     background:
       radial-gradient(circle at 40% 40%, rgba(167,139,202,0.12) 0%, transparent 60%),
-      radial-gradient(circle at 70% 60%, rgba(232,168,56,0.08) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(184,212,168,0.06) 0%, transparent 70%);
+      radial-gradient(circle at 70% 60%, rgba(232,168,56,0.08) 0%, transparent 50%);
     border: 1px solid rgba(167,139,202,0.08);
     animation: breathe 8s ease-in-out infinite;
   }
@@ -129,70 +127,50 @@
   }
 
   .hero-content {
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
     padding: 2rem 2rem 2rem clamp(2rem, 8vw, 8rem);
     max-width: 650px;
   }
   .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6em;
+    display: inline-flex; align-items: center; gap: 0.6em;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--crocus-soft);
+    font-size: 0.68rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--crocus-soft);
     margin-bottom: 2rem;
     animation: fadeIn 1s ease 0.2s both;
   }
   .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 28px; height: 1px;
-    background: var(--crocus-soft);
+    content: ''; display: inline-block;
+    width: 28px; height: 1px; background: var(--crocus-soft);
   }
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.8rem, 7vw, 4.8rem);
-    font-weight: 300;
-    color: var(--earth);
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
+    font-weight: 300; color: var(--earth);
+    line-height: 1.15; margin-bottom: 0.5rem;
     animation: fadeSlideUp 1.2s ease 0.4s both;
   }
   .hero-title em { font-style: italic; font-weight: 500; color: var(--crocus); }
-  .hero-title .saffron { color: var(--saffron); font-weight: 400; }
+  .hero-title .saffron { color: var(--saffron); }
   .hero-cn {
     font-family: 'Noto Serif SC', serif;
     font-size: clamp(1rem, 2.5vw, 1.35rem);
-    color: var(--crocus-soft);
-    font-weight: 400;
-    margin-bottom: 1.5rem;
+    color: var(--crocus-soft); margin-bottom: 1.5rem;
     animation: fadeSlideUp 1.2s ease 0.6s both;
   }
   .hero-desc {
-    font-size: 0.92rem;
-    color: var(--text-light);
-    font-weight: 300;
-    line-height: 1.9;
-    max-width: 440px;
-    margin-bottom: 2.5rem;
+    font-size: 0.92rem; color: var(--text-light);
+    font-weight: 300; line-height: 1.9;
+    max-width: 440px; margin-bottom: 2.5rem;
     animation: fadeSlideUp 1.2s ease 0.8s both;
   }
   .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8em;
-    padding: 0.85em 2em;
-    background: var(--crocus);
-    color: white;
-    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.8em;
+    padding: 0.85em 2em; background: var(--crocus);
+    color: white; text-decoration: none;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    border-radius: 50px;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.12em; border-radius: 50px;
     transition: all 0.4s ease;
     animation: fadeSlideUp 1.2s ease 1s both;
     box-shadow: 0 4px 20px rgba(123,94,167,0.2);
@@ -202,99 +180,69 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(123,94,167,0.3);
   }
-  .hero-cta svg { width: 16px; height: 16px; transition: transform 0.3s; }
-  .hero-cta:hover svg { transform: translateX(3px); }
+  .hero-cta svg { width: 16px; height: 16px; }
 
   /* ═══════ VERSE ═══════ */
   .verse {
-    padding: 4rem 2rem;
-    text-align: center;
+    padding: 4rem 2rem; text-align: center;
     background: linear-gradient(180deg, var(--cream) 0%, var(--petal) 100%);
     position: relative;
   }
   .verse::before {
-    content: '"';
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 8rem;
-    color: rgba(123,94,167,0.06);
-    position: absolute;
-    top: 0.5rem; left: 50%;
-    transform: translateX(-50%);
-    line-height: 1;
+    content: '"'; font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem; color: rgba(123,94,167,0.06);
+    position: absolute; top: 0.5rem; left: 50%;
+    transform: translateX(-50%); line-height: 1;
   }
   .verse-text {
     font-family: 'Noto Serif SC', serif;
     font-size: clamp(1.05rem, 2.5vw, 1.35rem);
     color: var(--crocus-deep);
-    max-width: 550px;
-    margin: 0 auto 1rem;
-    line-height: 2;
+    max-width: 550px; margin: 0 auto 1rem; line-height: 2;
   }
   .verse-ref {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.9rem;
-    color: var(--crocus-soft);
+    font-style: italic; font-size: 0.9rem; color: var(--crocus-soft);
   }
 
-  /* ═══════ SECTION HEADER ═══════ */
+  /* ═══════ SECTION ═══════ */
   .sec-head { text-align: center; margin-bottom: 3.5rem; }
   .sec-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.62rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--saffron);
-    font-weight: 500;
+    font-size: 0.62rem; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--saffron); font-weight: 500;
   }
   .sec-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
-    font-weight: 400;
-    color: var(--earth);
-    margin-top: 0.4rem;
+    font-weight: 400; color: var(--earth); margin-top: 0.4rem;
   }
   .sec-line {
     width: 40px; height: 2px;
     background: linear-gradient(90deg, var(--crocus-soft), var(--saffron-soft));
-    margin: 1rem auto 0;
-    border-radius: 2px;
+    margin: 1rem auto 0; border-radius: 2px;
   }
 
   /* ═══════ POSTS ═══════ */
-  .posts {
-    padding: 5rem 2rem;
-    background: var(--petal);
-  }
+  .posts { padding: 5rem 2rem; background: var(--petal); }
   .posts-grid {
-    max-width: 1080px;
-    margin: 0 auto;
+    max-width: 1080px; margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
   }
-
   .card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
+    background: white; border-radius: 16px; overflow: hidden;
     box-shadow: 0 2px 16px rgba(123,94,167,0.06);
-    transition: all 0.45s ease;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(30px);
+    transition: all 0.45s ease; cursor: pointer;
+    opacity: 0; transform: translateY(30px);
   }
   .card.visible { opacity: 1; transform: translateY(0); }
   .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 16px 48px rgba(123,94,167,0.12);
   }
-
-  .card-img {
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-  }
+  .card-img { height: 200px; overflow: hidden; }
   .card-img-bg {
     width: 100%; height: 100%;
     display: flex; align-items: center; justify-content: center;
@@ -302,317 +250,326 @@
   }
   .card:hover .card-img-bg { transform: scale(1.05); }
   .card-img-icon { font-size: 3.5rem; opacity: 0.3; }
-
-  /* Color rotation for cards */
-  .card-color-0 .card-img-bg { background: linear-gradient(135deg, #e8dff5 0%, #d4c4eb 40%, #c2aedd 100%); }
-  .card-color-1 .card-img-bg { background: linear-gradient(135deg, #f5eed5 0%, #f0e2b0 40%, #e8d490 100%); }
-  .card-color-2 .card-img-bg { background: linear-gradient(135deg, #ddebd4 0%, #c4ddb8 40%, #b0d0a0 100%); }
+  .card-color-0 .card-img-bg { background: linear-gradient(135deg, #e8dff5, #c2aedd); }
+  .card-color-1 .card-img-bg { background: linear-gradient(135deg, #f5eed5, #e8d490); }
+  .card-color-2 .card-img-bg { background: linear-gradient(135deg, #ddebd4, #b0d0a0); }
   .card-color-0 .card-tag { background: var(--crocus-soft); }
   .card-color-1 .card-tag { background: var(--saffron); }
   .card-color-2 .card-tag { background: var(--leaf); }
-
   .card-body { padding: 1.6rem 1.8rem 1.8rem; }
   .card-tag {
-    display: inline-block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: white;
-    padding: 0.25em 0.9em;
-    border-radius: 20px;
-    margin-bottom: 0.9rem;
+    display: inline-block; font-family: 'DM Sans', sans-serif;
+    font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: white; padding: 0.25em 0.9em;
+    border-radius: 20px; margin-bottom: 0.9rem;
   }
   .card-title {
     font-family: 'Noto Serif SC', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--earth);
-    line-height: 1.6;
-    margin-bottom: 0.7rem;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--earth); line-height: 1.6; margin-bottom: 0.7rem;
   }
   .card-excerpt {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    font-weight: 300;
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
+    font-size: 0.85rem; color: var(--text-light);
+    font-weight: 300; line-height: 1.8; margin-bottom: 1.2rem;
   }
   .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1rem;
-    border-top: 1px solid var(--crocus-mist);
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 1rem; border-top: 1px solid var(--crocus-mist);
   }
-  .card-date {
-    font-size: 0.72rem;
-    color: var(--text-light);
-    font-family: 'DM Sans', sans-serif;
-  }
+  .card-date { font-size: 0.72rem; color: var(--text-light); font-family: 'DM Sans', sans-serif; }
   .card-link {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--crocus);
-    text-decoration: none;
+    font-size: 0.88rem; font-weight: 600; color: var(--crocus);
+  }
+
+  /* ═══════ ARTICLE PANEL ═══════ */
+  .article-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(61,50,50,0.4);
+    backdrop-filter: blur(6px);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s;
+  }
+  .article-overlay.open { opacity: 1; visibility: visible; }
+
+  .article-panel {
+    position: fixed; top: 0; right: 0;
+    width: min(680px, 100%); height: 100%;
+    z-index: 201; background: var(--cream);
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.1);
+  }
+  .article-panel.open { transform: translateX(0); }
+
+  .article-bar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(253,251,247,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--crocus-mist);
+  }
+  .article-back {
+    display: flex; align-items: center; gap: 0.5em;
+    background: none; border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; color: var(--text-light);
+    cursor: pointer; padding: 0.5em;
     transition: color 0.3s;
   }
-  .card-link:hover { color: var(--crocus-deep); }
+  .article-back:hover { color: var(--crocus); }
+  .article-back svg { width: 18px; height: 18px; }
 
-  /* ═══════ LOADING STATE ═══════ */
-  .loading-msg {
-    text-align: center;
-    padding: 3rem;
+  .article-head {
+    padding: 2.5rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--crocus-mist);
+  }
+  .article-head .card-tag { margin-bottom: 1rem; }
+  .article-h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 700; color: var(--earth);
+    line-height: 1.5; margin-bottom: 0.8rem;
+  }
+  .article-meta {
     font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem; color: var(--text-light);
+  }
+
+  .article-body {
+    padding: 2rem;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .article-body p {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.95rem; color: var(--text);
+    line-height: 2.1; margin-bottom: 1.5rem; font-weight: 300;
+  }
+  .article-body p:first-child::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; font-weight: 600;
+    color: var(--crocus); float: left;
+    line-height: 1; margin: 0.05em 0.12em 0 0;
+  }
+
+  .article-end {
+    text-align: center; padding: 2rem 2rem 3rem;
+    color: var(--crocus-soft); font-size: 1.5rem; letter-spacing: 0.5em;
+  }
+  .article-empty {
+    text-align: center; padding: 3rem 2rem; color: var(--text-light);
+  }
+  .article-empty .ico { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  .article-doc-frame {
+    width: 100%;
+    min-height: 70vh;
+    border: none;
+    display: block;
+  }
+  .article-doc-loading {
+    text-align: center;
+    padding: 3rem 2rem;
     color: var(--text-light);
-    font-size: 0.88rem;
+    font-size: 0.85rem;
   }
-  .loading-msg .spinner {
+  .article-doc-loading .spinner {
+    margin-bottom: 0.5rem;
+  }
+  .article-doc-link {
     display: inline-block;
-    width: 24px; height: 24px;
-    border: 2px solid var(--crocus-mist);
-    border-top-color: var(--crocus);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin-bottom: 0.8rem;
+    margin-top: 1rem;
+    padding: 0.6em 1.5em;
+    background: var(--crocus);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: background 0.3s;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .article-doc-link:hover { background: var(--crocus-deep); }
 
   /* ═══════ CATEGORIES ═══════ */
-  .categories {
-    padding: 5rem 2rem;
-    background: var(--cream);
-  }
+  .categories { padding: 5rem 2rem; background: var(--cream); }
   .cat-row {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 900px; margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1.2rem;
   }
   .cat-pill {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.3rem 1.5rem;
-    background: white;
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.3rem 1.5rem; background: white;
     border-radius: 60px;
     box-shadow: 0 2px 12px rgba(123,94,167,0.05);
-    transition: all 0.35s ease;
-    cursor: pointer;
+    transition: all 0.35s ease; cursor: pointer;
     border: 1px solid transparent;
   }
   .cat-pill:hover {
     border-color: var(--crocus-mist);
     transform: translateX(4px);
-    box-shadow: 0 6px 24px rgba(123,94,167,0.1);
   }
   .cat-dot {
-    width: 36px; height: 36px;
-    border-radius: 50%;
+    width: 36px; height: 36px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
+    font-size: 1rem; flex-shrink: 0;
   }
-  .cat-info { min-width: 0; }
   .cat-name {
     font-family: 'Noto Serif SC', serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--earth);
+    font-size: 0.88rem; font-weight: 600; color: var(--earth);
   }
-  .cat-count {
-    font-size: 0.68rem;
-    color: var(--text-light);
-  }
+  .cat-count { font-size: 0.68rem; color: var(--text-light); }
 
   /* ═══════ ABOUT ═══════ */
   .about {
     padding: 5rem 2rem;
-    background: linear-gradient(170deg, var(--crocus-deep) 0%, var(--crocus) 100%);
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(170deg, var(--crocus-deep), var(--crocus));
+    position: relative; overflow: hidden;
   }
   .about::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='40' cy='40' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E") repeat;
   }
   .about-inner {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    z-index: 2;
+    max-width: 700px; margin: 0 auto;
+    text-align: center; position: relative; z-index: 2;
   }
   .about-avatar {
-    width: 100px; height: 100px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-soft) 100%);
+    width: 100px; height: 100px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), var(--saffron-soft));
     margin: 0 auto 1.5rem;
     display: flex; align-items: center; justify-content: center;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: white;
+    font-size: 2.5rem; font-weight: 700; color: white;
     box-shadow: 0 8px 30px rgba(0,0,0,0.15);
   }
   .about h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: white;
+    font-size: 1.6rem; font-weight: 400; color: white;
   }
   .about h3 em { font-weight: 500; color: var(--saffron-soft); }
-  .about-location {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.4);
-    font-family: 'DM Sans', sans-serif;
-    margin-bottom: 1.5rem;
+  .about-loc {
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.4); margin-bottom: 1.5rem;
   }
-  .about p.about-bio {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.65);
-    font-weight: 300;
-    line-height: 2;
-    max-width: 520px;
-    margin: 0 auto;
+  .about-bio {
+    font-size: 0.9rem; color: rgba(255,255,255,0.65);
+    font-weight: 300; line-height: 2;
+    max-width: 520px; margin: 0 auto;
   }
 
   /* ═══════ FOOTER ═══════ */
   footer {
     background: var(--earth);
-    padding: 3rem 2rem 2rem;
-    text-align: center;
+    padding: 3rem 2rem 2rem; text-align: center;
   }
   .ft-brand {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--crocus-soft);
-    margin-bottom: 1rem;
+    font-size: 1.1rem; color: var(--crocus-soft); margin-bottom: 1rem;
   }
   .ft-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.8rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 1.8rem;
+    margin-bottom: 1.5rem; flex-wrap: wrap;
   }
   .ft-links a {
-    color: rgba(255,255,255,0.35);
-    text-decoration: none;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    transition: color 0.3s;
-    font-family: 'DM Sans', sans-serif;
+    color: rgba(255,255,255,0.35); text-decoration: none;
+    font-size: 0.72rem; transition: color 0.3s;
   }
   .ft-links a:hover { color: var(--saffron-soft); }
-  .ft-copy {
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.15);
-  }
+  .ft-copy { font-size: 0.65rem; color: rgba(255,255,255,0.15); }
 
-  /* ═══════ SETUP BANNER ═══════ */
+  /* ═══════ SETUP ═══════ */
   .setup-banner {
     background: linear-gradient(135deg, #fff9e6, #fff3cc);
-    border: 1px solid #f0d060;
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    max-width: 800px;
+    border: 1px solid #f0d060; border-radius: 12px;
+    padding: 1.5rem 2rem; max-width: 800px;
     margin: 0 auto 2rem;
-    font-size: 0.82rem;
-    color: #6b5300;
-    line-height: 1.8;
+    font-size: 0.82rem; color: #6b5300; line-height: 1.8;
   }
-  .setup-banner h4 {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #4a3a00;
-  }
+  .setup-banner h4 { font-size: 1rem; margin-bottom: 0.5rem; color: #4a3a00; }
   .setup-banner code {
     background: rgba(0,0,0,0.06);
-    padding: 0.15em 0.4em;
-    border-radius: 4px;
-    font-size: 0.78rem;
+    padding: 0.15em 0.4em; border-radius: 4px; font-size: 0.78rem;
   }
-  .setup-banner a {
-    color: var(--crocus);
-    font-weight: 500;
+  .loading-msg { text-align: center; padding: 3rem; color: var(--text-light); }
+  .spinner {
+    display: inline-block; width: 24px; height: 24px;
+    border: 2px solid var(--crocus-mist); border-top-color: var(--crocus);
+    border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 0.8rem;
   }
-  .setup-banner .step {
-    margin: 0.3rem 0;
-  }
-
-  /* ═══════ ANIMATIONS ═══════ */
+  @keyframes spin { to { transform: rotate(360deg); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes fadeSlideUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ═══════ RESPONSIVE ═══════ */
   @media (max-width: 768px) {
     .nav-links { display: none; }
-    .hero-botanical {
-      right: -30%; top: auto; bottom: -10%;
-      width: 280px; height: 280px; opacity: 0.4;
-    }
+    .hero-botanical { right: -30%; bottom: -10%; top: auto; width: 280px; height: 280px; opacity: 0.4; }
     .hero-content { padding: 8rem 1.5rem 4rem; }
     .posts-grid { grid-template-columns: 1fr; }
     .cat-row { grid-template-columns: 1fr 1fr; }
-    section, .posts, .categories { padding: 3.5rem 1.5rem; }
+    .posts, .categories { padding: 3.5rem 1.5rem; }
+    .article-body, .article-head { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
+
+  body.locked { overflow: hidden; }
 </style>
 </head>
 <body>
 
-<!-- Floating petals -->
 <div class="petal-float"></div>
 <div class="petal-float"></div>
 <div class="petal-float"></div>
 <div class="petal-float"></div>
 <div class="petal-float"></div>
 
-<!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-brand">Blossom<span>.</span></a>
+  <a class="nav-brand" onclick="closeArticle()">Blossom<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#posts">文章</a></li>
-    <li><a href="#categories">分类</a></li>
-    <li><a href="#about">关于</a></li>
+    <li><a href="#posts" onclick="closeArticle()">文章</a></li>
+    <li><a href="#categories" onclick="closeArticle()">分类</a></li>
+    <li><a href="#about" onclick="closeArticle()">关于</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
+<!-- ARTICLE PANEL -->
+<div class="article-overlay" id="overlay" onclick="closeArticle()"></div>
+<div class="article-panel" id="panel">
+  <div class="article-bar">
+    <button class="article-back" onclick="closeArticle()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回
+    </button>
+  </div>
+  <div id="panelContent"></div>
+</div>
+
+<section class="hero" id="home">
   <div class="hero-botanical"></div>
   <div class="hero-content">
     <div class="hero-tag">Faith · Life · Bloom</div>
-    <h1 class="hero-title">
-      Blossom<br>like <em>Crocus</em><span class="saffron">.</span>
-    </h1>
+    <h1 class="hero-title">Blossom<br>like <em>Crocus</em><span class="saffron">.</span></h1>
     <p class="hero-cn">如番红花绽放 — 信仰中生长，恩典里盛开</p>
     <p class="hero-desc">在塔斯马尼亚的晨光里，记录信仰的季节、创作的灵感、生命中每一个悄然绽放的时刻。</p>
-    <a href="#posts" class="hero-cta">
-      开始阅读
+    <a href="#posts" class="hero-cta">开始阅读
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </section>
 
-<!-- VERSE -->
 <section class="verse">
   <p class="verse-text">「旷野和干旱之地必然欢喜，<br>沙漠也必快乐，又像玫瑰开花。<br>必开花繁盛，乐上加乐，而且欢呼。」</p>
   <p class="verse-ref">— 以赛亚书 35:1-2</p>
 </section>
 
-<!-- POSTS (loaded from Google Sheets) -->
 <section class="posts" id="posts">
   <div class="sec-head">
     <p class="sec-label">最新文章</p>
@@ -620,28 +577,20 @@
     <div class="sec-line"></div>
   </div>
 
-  <!-- Setup instructions (hidden once configured) -->
   <div class="setup-banner" id="setupBanner">
-    <h4>📋 设置 Google Sheets 数据源</h4>
-    <div class="step">1️⃣ 打开 <a href="https://sheets.google.com" target="_blank">Google Sheets</a>，新建一个表格</div>
-    <div class="step">2️⃣ 第一行填写表头：<code>title</code> <code>tag</code> <code>excerpt</code> <code>date</code> <code>icon</code> <code>link</code></div>
-    <div class="step">3️⃣ 从第二行开始写你的文章数据</div>
-    <div class="step">4️⃣ 点击 文件 → 共享 → 发布到网络 → 选「逗号分隔值(.csv)」→ 发布</div>
-    <div class="step">5️⃣ 复制发布链接，替换下方代码中的 <code>SHEET_CSV_URL</code></div>
-    <div class="step" style="margin-top:0.8rem; padding: 0.6rem; background: rgba(0,0,0,0.04); border-radius: 8px;">
-      💡 示例数据已加载，你可以先预览效果！
-    </div>
+    <h4>📋 Google Sheets 表头（7列）</h4>
+    <p><code>title</code> · <code>tag</code> · <code>excerpt</code> · <code>date</code> · <code>icon</code> · <code>link</code> · <code>doc_url</code></p>
+    <p style="margin-top:0.5rem;">📝 <strong>写文章方式：</strong>在 Google Docs 写好文章 → 文件 → 共享 → 发布到网络 → 把链接填到 <code>doc_url</code> 列</p>
+    <p style="margin-top:0.3rem; opacity:0.7;">💡 示例数据已加载，点击卡片可预览阅读效果</p>
   </div>
 
   <div class="posts-grid" id="postsGrid">
     <div class="loading-msg" id="loadingMsg">
-      <div class="spinner"></div><br>
-      加载文章中...
+      <div class="spinner"></div><br>加载文章中...
     </div>
   </div>
 </section>
 
-<!-- CATEGORIES (auto-generated from posts) -->
 <section class="categories" id="categories">
   <div class="sec-head">
     <p class="sec-label">探索主题</p>
@@ -651,21 +600,19 @@
   <div class="cat-row" id="catRow"></div>
 </section>
 
-<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-avatar">T</div>
     <h3>Hi, I'm <em>Tina</em></h3>
-    <p class="about-location">KINGSTON, TASMANIA 🇦🇺</p>
+    <p class="about-loc">KINGSTON, TASMANIA 🇦🇺</p>
     <p class="about-bio">来自塔斯马尼亚的创作者，以信仰为根、以创意为枝，在南半球的季节里记录生命中每一个绽放的瞬间。这里有圣经影像创作的幕后故事、信仰路上的思考，以及泥土与光影中的日常恩典。</p>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-brand">Blossom Like Crocus</div>
   <div class="ft-links">
-    <a href="#">首页</a>
+    <a href="#home">首页</a>
     <a href="#posts">文章</a>
     <a href="#about">关于</a>
   </div>
@@ -674,264 +621,220 @@
 
 <script>
 // ╔══════════════════════════════════════════════════╗
-// ║  👇 把你的 Google Sheets CSV 链接粘贴在这里 👇    ║
+// ║  👇 粘贴你的 Google Sheets CSV 链接 👇          ║
 // ╚══════════════════════════════════════════════════╝
-const SHEET_CSV_URL = '';
-// 示例格式：
-// 'https://docs.google.com/spreadsheets/d/e/2PACX-xxxxx/pub?output=csv'
+const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1OVj7YkZ4WB3mHh0IvVRvTllsIhKQpwSrdEUkti8g3ys/gviz/tq?tqx=out:csv';
 
-// ═══════════ DEMO DATA (当没有配置 Sheets 时使用) ═══════════
-const DEMO_POSTS = [
+const DEMO = [
   {
     title: '冬天过后的第一朵花 — 关于等待与盼望',
-    tag: '信仰随想',
-    excerpt: '番红花总是在最冷的季节率先破土。信仰的等待也是如此，在看不见的土壤里，根已经在生长…',
-    date: '2026-04-10',
-    icon: '🌸',
-    link: '#'
+    tag: '信仰随想', excerpt: '番红花总是在最冷的季节率先破土。信仰的等待也是如此…',
+    date: '2026-04-10', icon: '🌸', link: '',
+    content: '番红花总是在最冷的季节率先破土。当大地还覆着一层薄霜，当所有的花朵都在沉睡，它已经悄悄地把紫色的花瓣推出了泥土。\n我常常想，信仰的等待也是如此。在看不见的土壤里，根已经在生长。我们只看到冬天的荒凉，却不知道春天的准备工作早已在地下开始。\n搬到塔斯马尼亚之后，我在院子里种了一片番红花球茎。那是三月的事情，南半球的秋天刚刚开始。我把它们埋进土里，然后等待。整个冬天，什么都看不见。\n但是有一天清晨，我推开后门，看见了第一朵紫色的花。那一刻我站在原地，眼眶湿润了。不是因为花有多美，而是因为我突然明白了一件事：等待不是空白的，等待本身就是生长。\n以赛亚书说：「等候耶和华的，必从新得力。」那个「等候」不是什么都不做的枯坐，而是像球茎一样，在黑暗里默默地扎根、储存养分、预备绽放。\n你现在也许正在一个看不见尽头的冬天里。也许是工作上的困境，也许是一段关系的低谷，也许只是日复一日的平淡让你感到疲倦。\n但请记住番红花。它没有选择在温暖的时候才开花，它选择在最冷的时候绽放。因为有些花，就是为冬天而生的。'
   },
   {
     title: '安得烈遇见耶稣 — 约翰福音短片创作手记',
-    tag: '影像创作',
-    excerpt: '一个渔夫在黄昏时分的转身，如何用 AI 工具还原两千年前那一刻的光线与温度…',
-    date: '2026-04-03',
-    icon: '🎬',
-    link: '#'
+    tag: '影像创作', excerpt: '一个渔夫在黄昏时分的转身，如何用 AI 工具还原两千年前的光线…',
+    date: '2026-04-03', icon: '🎬', link: '',
+    content: '约翰福音 1:40-42 记载了一个看似简单的场景：安得烈听了施洗约翰的话，就跟从了耶稣。然后他做了一件事——去找他的哥哥西门彼得，把他带到耶稣面前。\n这段经文只有短短三节，但当我试图把它变成画面的时候，才发现其中蕴含着多少细节和情感。\n首先是光线。这件事发生在「约有申正」，也就是下午四点左右。巴勒斯坦的黄昏光线是温暖而柔和的，带着金色调。我在 fal.ai 的提示词里特别强调了这一点：Arri Alexa 的色彩还原，暖色去饱和色调。\n然后是人物的表情。安得烈在找到彼得的时候说「我们遇见弥赛亚了」。试想一下说出这句话时脸上的表情——不是平静的陈述，而是压抑着的激动，眼睛里有光。\n用 FLUX 1.1 Pro 生成关键帧的时候，我反复调整了五次才得到满意的效果。最大的挑战是保持人物的一致性，让同一个彼得在不同场景里看起来是同一个人。\n最终的成品是一支 60 秒的短视频，六个镜头，从约旦河边到加利利的渔村。当我把最后一帧渲染出来的时候，自己先被感动了。\n有时候做这些视频，不只是在「制作内容」，更像是在用另一种方式读经。当你必须去想象每一个细节——光线、表情、衣服的质地、空气中的尘土——你会发现自己对这段经文的理解深了一层。'
   },
   {
     title: '塔斯马尼亚的秋日花园 — 在泥土中看见恩典',
-    tag: '生活札记',
-    excerpt: '当手指触碰到湿润的泥土，种下第一颗球茎的那一刻，忽然理解了「撒种与收割」的比喻…',
-    date: '2026-03-25',
-    icon: '🌿',
-    link: '#'
-  },
-  {
-    title: '从经文到画面 — 鏡語 AI 视频生产流程全解析',
-    tag: '技术手记',
-    excerpt: '如何将一段圣经经文，通过 AI 工具链转化为电影级短视频？分享我的完整工作流…',
-    date: '2026-03-18',
-    icon: '🛠',
-    link: '#'
-  },
-  {
-    title: '你的神就是我的神 — 路得记短片创作回顾',
-    tag: '影像创作',
-    excerpt: '在异乡的旷野里，忠诚与爱的故事穿越千年。这部六幕短片的诞生背后…',
-    date: '2026-03-10',
-    icon: '🎬',
-    link: '#'
-  },
-  {
-    title: '春天的祷告 — 写给新季节的信',
-    tag: '信仰随想',
-    excerpt: '当南半球的第一缕春风吹过 Kingston 的山坡，我写下了这封给新季节的信…',
-    date: '2026-03-01',
-    icon: '✉️',
-    link: '#'
+    tag: '生活札记', excerpt: '当手指触碰到湿润的泥土，种下第一颗球茎，忽然理解了撒种的比喻…',
+    date: '2026-03-25', icon: '🌿', link: '',
+    content: 'Kingston 的秋天来得很安静。不像北方那样轰轰烈烈地变色，这里的变化是渐进的：空气一天比一天凉，日落一天比一天早，花园里的西红柿慢慢不再结果。\n我决定在这个秋天种一些球茎。番红花、水仙、风信子。它们需要经过一整个冬天的寒冷才会开花，园艺书上说这叫「春化作用」——没有寒冷，就没有绽放。\n在泥土里挖洞的时候，我想起了耶稣说的那个比喻：一粒麦子不落在地里死了，仍旧是一粒；若是死了，就结出许多子粒来。\n以前读这段经文，我总是把注意力放在「死」和「结果」上。但那天蹲在花园里，双手沾满泥土，我突然注意到了中间那个过程——在泥土里的时间。\n球茎在土里做什么？它在等待。但不只是等待，它在慢慢地生出根系，储存能量，感知温度的变化。到了某一天，当条件成熟，它就会破土而出。\n我想我们的生命也有这样的季节。有些时候什么都看不到，什么都感觉不到，好像被埋在了泥土里。但也许那正是根在生长的时候。'
   }
 ];
 
-// ═══════════ CSV PARSER ═══════════
-function parseCSV(text) {
-  const lines = text.split('\n').filter(l => l.trim());
+let allPosts = [];
+
+// CSV parser
+function parseLine(l) {
+  const r = []; let c = '', q = false;
+  for (let i = 0; i < l.length; i++) {
+    const ch = l[i];
+    if (ch === '"') { if (q && l[i+1] === '"') { c += '"'; i++; } else q = !q; }
+    else if (ch === ',' && !q) { r.push(c); c = ''; }
+    else c += ch;
+  }
+  r.push(c); return r;
+}
+function parseCSV(t) {
+  const lines = t.split('\n').filter(l => l.trim());
   if (lines.length < 2) return [];
-
-  const headers = parseCSVLine(lines[0]);
-  const posts = [];
-
-  for (let i = 1; i < lines.length; i++) {
-    const values = parseCSVLine(lines[i]);
-    const post = {};
-    headers.forEach((h, idx) => {
-      post[h.trim().toLowerCase()] = (values[idx] || '').trim();
-    });
-    if (post.title) posts.push(post);
-  }
-  return posts;
+  const h = parseLine(lines[0]);
+  return lines.slice(1).map(l => {
+    const v = parseLine(l), o = {};
+    h.forEach((k, i) => o[k.trim().toLowerCase()] = (v[i] || '').trim());
+    return o;
+  }).filter(p => p.title);
 }
 
-function parseCSVLine(line) {
-  const result = [];
-  let current = '';
-  let inQuotes = false;
-
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (ch === '"') {
-      if (inQuotes && line[i + 1] === '"') {
-        current += '"';
-        i++;
-      } else {
-        inQuotes = !inQuotes;
-      }
-    } else if (ch === ',' && !inQuotes) {
-      result.push(current);
-      current = '';
-    } else {
-      current += ch;
-    }
-  }
-  result.push(current);
-  return result;
+function fmtDate(s) {
+  if (!s) return '';
+  const d = new Date(s);
+  return isNaN(d) ? s : `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
 }
 
-// ═══════════ FORMAT DATE ═══════════
-function formatDate(dateStr) {
-  if (!dateStr) return '';
-  try {
-    const d = new Date(dateStr);
-    if (isNaN(d)) return dateStr;
-    return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
-  } catch {
-    return dateStr;
-  }
-}
-
-// ═══════════ RENDER POSTS ═══════════
+// Render cards
 function renderPosts(posts) {
+  allPosts = posts;
   const grid = document.getElementById('postsGrid');
-  const loading = document.getElementById('loadingMsg');
-  if (loading) loading.remove();
+  const ld = document.getElementById('loadingMsg');
+  if (ld) ld.remove();
 
-  const colorClasses = ['card-color-0', 'card-color-1', 'card-color-2'];
-  const defaultIcons = ['🌸', '🎬', '🌿', '🛠', '✉️', '📖'];
+  const cls = ['card-color-0','card-color-1','card-color-2'];
+  const ics = ['🌸','🎬','🌿','🛠','✉️','📖'];
 
-  posts.forEach((post, i) => {
+  posts.forEach((p, i) => {
     const card = document.createElement('article');
-    card.className = `card ${colorClasses[i % 3]}`;
-
-    const icon = post.icon || defaultIcons[i % defaultIcons.length];
-    const link = post.link || '#';
-
+    card.className = `card ${cls[i%3]}`;
     card.innerHTML = `
-      <div class="card-img">
-        <div class="card-img-bg">
-          <span class="card-img-icon">${icon}</span>
-        </div>
-      </div>
+      <div class="card-img"><div class="card-img-bg"><span class="card-img-icon">${p.icon||ics[i%ics.length]}</span></div></div>
       <div class="card-body">
-        <span class="card-tag">${post.tag || '未分类'}</span>
-        <h3 class="card-title">${post.title}</h3>
-        <p class="card-excerpt">${post.excerpt || ''}</p>
+        <span class="card-tag">${p.tag||'未分类'}</span>
+        <h3 class="card-title">${p.title}</h3>
+        <p class="card-excerpt">${p.excerpt||''}</p>
         <div class="card-footer">
-          <span class="card-date">${formatDate(post.date)}</span>
-          <a href="${link}" class="card-link">阅读 →</a>
+          <span class="card-date">${fmtDate(p.date)}</span>
+          <span class="card-link">阅读全文 →</span>
         </div>
-      </div>
-    `;
-
-    card.addEventListener('click', () => {
-      if (link && link !== '#') window.location.href = link;
-    });
-
+      </div>`;
+    card.onclick = () => openArticle(i);
     grid.appendChild(card);
   });
 
-  // Animate cards in
   requestAnimationFrame(() => {
     const cards = grid.querySelectorAll('.card');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
+    const ob = new IntersectionObserver(es => {
+      es.forEach(e => {
         if (e.isIntersecting) {
-          const idx = Array.from(cards).indexOf(e.target);
-          setTimeout(() => e.target.classList.add('visible'), idx * 120);
-          obs.unobserve(e.target);
+          setTimeout(() => e.target.classList.add('visible'), Array.from(cards).indexOf(e.target)*120);
+          ob.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
-    cards.forEach(c => obs.observe(c));
+    }, {threshold:0.1});
+    cards.forEach(c => ob.observe(c));
   });
 
-  // Build categories
-  renderCategories(posts);
+  renderCats(posts);
 }
 
-// ═══════════ RENDER CATEGORIES ═══════════
-function renderCategories(posts) {
-  const catRow = document.getElementById('catRow');
-  const catMap = {};
-  const catColors = ['#e8dff5', '#fef3d7', '#e2f0db', '#fde8e8', '#e0f0ff', '#fff0e0'];
-  const catIcons = { '信仰随想': '✝', '影像创作': '🎬', '生活札记': '🌱', '技术手记': '💡' };
+// Open article
+function openArticle(i) {
+  const p = allPosts[i];
+  if (!p) return;
+  const tagBg = i%3===0 ? 'var(--crocus-soft)' : i%3===1 ? 'var(--saffron)' : 'var(--leaf)';
 
-  posts.forEach(p => {
-    const tag = p.tag || '未分类';
-    catMap[tag] = (catMap[tag] || 0) + 1;
-  });
+  let body = '';
 
-  const tags = Object.keys(catMap);
-  tags.forEach((tag, i) => {
-    const pill = document.createElement('div');
-    pill.className = 'cat-pill';
-    pill.style.opacity = '0';
-    pill.style.transform = 'translateX(-20px)';
-    pill.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  // Priority: doc_url (Google Docs) > content (inline text) > empty
+  const docUrl = p.doc_url || p.docurl || p.doc || '';
 
-    const icon = catIcons[tag] || '📝';
-    const bgColor = catColors[i % catColors.length];
-
-    pill.innerHTML = `
-      <div class="cat-dot" style="background:${bgColor}">${icon}</div>
-      <div class="cat-info">
-        <p class="cat-name">${tag}</p>
-        <p class="cat-count">${catMap[tag]} 篇</p>
-      </div>
-    `;
-    catRow.appendChild(pill);
-  });
-
-  // Animate pills
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        const pills = catRow.querySelectorAll('.cat-pill');
-        pills.forEach((p, i) => {
-          setTimeout(() => {
-            p.style.opacity = '1';
-            p.style.transform = 'translateX(0)';
-          }, i * 100);
-        });
-        obs.unobserve(e.target);
+  if (docUrl.trim()) {
+    // Google Docs published URL → embed
+    let embedUrl = docUrl.trim();
+    // Convert various Google Docs URL formats to embed format
+    // Format: https://docs.google.com/document/d/XXXXX/pub → embed
+    if (embedUrl.includes('docs.google.com/document')) {
+      // Extract document ID
+      const match = embedUrl.match(/\/document\/d\/([a-zA-Z0-9_-]+)/);
+      if (match) {
+        embedUrl = `https://docs.google.com/document/d/${match[1]}/pub?embedded=true`;
       }
-    });
-  }, { threshold: 0.1 });
-  obs.observe(catRow);
-}
-
-// ═══════════ LOAD DATA ═══════════
-async function loadPosts() {
-  if (SHEET_CSV_URL) {
-    // Hide setup banner when URL is configured
-    const banner = document.getElementById('setupBanner');
-    if (banner) banner.style.display = 'none';
-
-    try {
-      const res = await fetch(SHEET_CSV_URL);
-      if (!res.ok) throw new Error('Fetch failed');
-      const csv = await res.text();
-      const posts = parseCSV(csv);
-      if (posts.length > 0) {
-        renderPosts(posts);
-        return;
-      }
-    } catch (err) {
-      console.error('Failed to load Google Sheets:', err);
     }
+
+    body = `<div class="article-doc-loading" id="docLoading">
+              <div class="spinner"></div>
+              正在加载文章…
+            </div>
+            <iframe class="article-doc-frame" id="docFrame"
+              src="${embedUrl}"
+              onload="document.getElementById('docLoading').style.display='none'"
+              onerror="document.getElementById('docLoading').innerHTML='<span class=\\'ico\\'>⚠️</span><p>加载失败</p>'"
+            ></iframe>
+            <div style="text-align:center; padding: 1rem 2rem 2rem;">
+              <a href="${docUrl.trim()}" target="_blank" class="article-doc-link">
+                在 Google Docs 中打开 ↗
+              </a>
+            </div>`;
+  } else if (p.content && p.content.trim()) {
+    const paras = p.content.replace(/\\n/g, '\n').split('\n').filter(s => s.trim());
+    body = `<div class="article-body">${paras.map(s => `<p>${s.trim()}</p>`).join('')}</div>
+            <div class="article-end">✿ ✿ ✿</div>`;
+  } else {
+    body = `<div class="article-empty"><span class="ico">🌱</span>
+            <p>这篇文章正在萌芽中…<br>在 Google Docs 写好文章后<br>把发布链接填到 <strong>doc_url</strong> 列即可</p></div>`;
   }
 
-  // Fallback to demo data
-  renderPosts(DEMO_POSTS);
+  document.getElementById('panelContent').innerHTML = `
+    <div class="article-head">
+      <span class="card-tag" style="background:${tagBg}">${p.tag||'未分类'}</span>
+      <h1 class="article-h1">${p.title}</h1>
+      <div class="article-meta">${fmtDate(p.date)}</div>
+    </div>${body}`;
+
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('panel').classList.add('open');
+  document.body.classList.add('locked');
+  document.getElementById('panel').scrollTop = 0;
 }
 
-// ═══════════ NAV SCROLL ═══════════
-const nav = document.getElementById('nav');
+function closeArticle() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('panel').classList.remove('open');
+  document.body.classList.remove('locked');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+
+// Categories
+function renderCats(posts) {
+  const row = document.getElementById('catRow');
+  const map = {};
+  const bg = ['#e8dff5','#fef3d7','#e2f0db','#fde8e8','#e0f0ff'];
+  const ic = {'信仰随想':'✝','影像创作':'🎬','生活札记':'🌱','技术手记':'💡'};
+  posts.forEach(p => { const t = p.tag||'未分类'; map[t]=(map[t]||0)+1; });
+  Object.keys(map).forEach((t,i) => {
+    const d = document.createElement('div');
+    d.className = 'cat-pill';
+    d.style.cssText = 'opacity:0;transform:translateX(-20px);transition:opacity .5s,transform .5s';
+    d.innerHTML = `<div class="cat-dot" style="background:${bg[i%bg.length]}">${ic[t]||'📝'}</div>
+                   <div><p class="cat-name">${t}</p><p class="cat-count">${map[t]} 篇</p></div>`;
+    row.appendChild(d);
+  });
+  const ob = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        row.querySelectorAll('.cat-pill').forEach((p,i) => {
+          setTimeout(() => { p.style.opacity='1'; p.style.transform='translateX(0)'; }, i*100);
+        });
+        ob.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.1});
+  ob.observe(row);
+}
+
+// Load
+async function load() {
+  if (SHEET_CSV_URL) {
+    document.getElementById('setupBanner').style.display = 'none';
+    try {
+      const r = await fetch(SHEET_CSV_URL);
+      if (!r.ok) throw 0;
+      const p = parseCSV(await r.text());
+      if (p.length) { renderPosts(p); return; }
+    } catch(e) { console.error(e); }
+  }
+  renderPosts(DEMO);
+}
+
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// ═══════════ INIT ═══════════
-loadPosts();
+load();
 </script>
-
 </body>
 </html>
