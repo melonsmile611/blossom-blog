@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>当孩子的生物钟「走慢了」— Blossom Like Crocus</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@400;500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF8F0;
+    --warm-white: #FEFCF8;
+    --sage: #8BAF8B;
+    --sage-light: #C8DEC8;
+    --sage-pale: #EDF5ED;
+    --blush: #E8C4C4;
+    --blush-light: #F5E8E8;
+    --gold: #C8A96E;
+    --gold-light: #F0E4C8;
+    --text-dark: #2C2820;
+    --text-body: #4A4035;
+    --text-muted: #9A8F80;
+    --text-sage: #5A7A5A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-body);
+    line-height: 1.8;
+  }
+
+  /* ── Nav ── */
+  nav {
+    background: var(--warm-white);
+    border-bottom: 1px solid #EDE8E0;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    color: var(--text-dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-brand .flower { font-size: 18px; }
+
+  .nav-tag {
+    font-size: 12px;
+    color: var(--text-sage);
+    background: var(--sage-pale);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(160deg, #EDF5ED 0%, #FDF8F0 40%, #F5EDE8 80%, #FDF0F0 100%);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(139,175,139,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-sage);
+    background: var(--sage-pale);
+    border: 1px solid var(--sage-light);
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+    max-width: 560px;
+    margin: 0 auto 12px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 420px;
+    margin: 0 auto 24px;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .hero-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* ── Article Layout ── */
+  .article-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Intro pull quote ── */
+  .intro-quote {
+    background: linear-gradient(135deg, var(--sage-pale), #F5F8ED);
+    border-left: 3px solid var(--sage);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-sage);
+    line-height: 1.7;
+  }
+
+  /* ── Body text ── */
+  .article-body p {
+    font-size: 15px;
+    color: var(--text-body);
+    margin-bottom: 20px;
+    line-height: 1.9;
+  }
+
+  /* ── Section headings ── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 44px 0 16px;
+  }
+
+  .section-title .icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .section-title h2 {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #D8D0C4, transparent);
+    margin-left: 12px;
+  }
+
+  /* ── Highlight boxes ── */
+  .highlight-box {
+    background: var(--gold-light);
+    border: 1px solid #E0D0A8;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .highlight-box .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8B6A30;
+    margin-bottom: 8px;
+  }
+
+  .highlight-box p {
+    color: #5A4520;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ── Tip list ── */
+  .tip-list {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tip-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--warm-white);
+    border: 1px solid #EDE8E0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .tip-list li .tip-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    line-height: 1.2;
+  }
+
+  .tip-list li .tip-text strong {
+    display: block;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  .tip-list li .tip-text span {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  /* ── Scripture box ── */
+  .scripture-box {
+    background: linear-gradient(135deg, #F0EDF8, #EDF5ED);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 36px 0;
+    text-align: center;
+  }
+
+  .scripture-box .verse {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #5A5070;
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  .scripture-box .ref {
+    font-size: 12px;
+    color: #9A90B0;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ── Card embed section ── */
+  .card-section {
+    margin: 48px 0;
+  }
+
+  .card-section-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card-section-header .label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-sage);
+    background: var(--sage-pale);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card-section-header h3 {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .card-section-header p {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .card-embed {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border: 1px solid #EDE8E0;
+  }
+
+  .card-embed iframe {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    background: linear-gradient(135deg, var(--blush-light), var(--sage-pale));
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .closing .flower-row {
+    font-size: 22px;
+    letter-spacing: 8px;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+
+  .closing p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-sage);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid #EDE8E0;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── Animations ── */
+  .hero, .article-wrap { animation: fadeIn 0.6s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-brand" href="https://bloomlikecrocus.com">
+    <span class="flower">🌸</span> Blossom Like Crocus
+  </a>
+  <span class="nav-tag">信仰 · 生命 · 成长</span>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">🌙 亲子 · 特殊需求</div>
+  <h1>当孩子的生物钟「走慢了」</h1>
+  <p class="hero-subtitle">关于自闭症儿童睡眠困难背后的科学，以及我们可以做的事</p>
+  <div class="hero-meta">
+    <span>🌿 Tina</span>
+    <span>·</span>
+    <span>📍 Kingston, Tasmania</span>
+    <span>·</span>
+    <span>🕐 约 8 分钟</span>
+  </div>
+</div>
+
+<!-- Article -->
+<div class="article-wrap">
+
+  <div class="intro-quote">
+    如果你家的孩子每晚要到很晚才睡着，早上又怎么都叫不起来——这不是「故意捣乱」，也不是「习惯不好」。很可能，他的身体里住着一个和外面世界「对不上时间」的生物钟。
+  </div>
+
+  <div class="article-body">
+
+    <!-- Section 1 -->
+    <div class="section-title">
+      <span class="icon">🔬</span>
+      <h2>这不只是「睡不着」这么简单</h2>
+    </div>
+
+    <p>研究显示，自闭症儿童中有 <strong>50% 到 80%</strong> 存在睡眠问题，而普通孩子中这个比例约为 25%。这个数字很大，但更重要的是：这种睡眠困难不是单纯的「不肯睡」，而是一种深层的生物学错位。</p>
+
+    <p>我们身体里有一个约 24 小时运转的内部时钟，由大脑里一个叫「视交叉上核」的区域控制。它会根据光线、饮食、运动等外部信号来「对时间」。但在自闭症儿童中，这个对表的过程往往出现了障碍——内部时钟很难和外部世界同步。</p>
+
+    <div class="highlight-box">
+      <div class="label">💡 为什么会这样？</div>
+      <p>研究发现，很多自闭症孩子体内褪黑素的分泌量天生偏低，这与一个叫 ASMT 的基因有关。褪黑素是帮助大脑感知「天黑了，该睡了」的激素——没有足够的它，入睡就会变得很困难。</p>
+    </div>
+
+    <p>除此之外，自闭症孩子的神经系统常常处于一种「高度警觉」的状态，身体像是一直在应对某种威胁。这让传统的睡前方法——调暗灯光、讲睡前故事——有时效果有限，因为身体还没有真正「下线」。</p>
+
+    <!-- Section 2 -->
+    <div class="section-title">
+      <span class="icon">🏠</span>
+      <h2>从睡眠环境开始改变</h2>
+    </div>
+
+    <p>好消息是：有很多事情我们可以做。首先从最容易入手的地方开始——孩子睡觉的那个空间。</p>
+
+    <ul class="tip-list">
+      <li>
+        <span class="tip-icon">🌅</span>
+        <div class="tip-text">
+          <strong>早晨要见光</strong>
+          <span>起床后尽快让孩子接触阳光或强光，帮助重置生物钟，告诉身体「白天开始了」。冬天可以用全光谱灯代替。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tip-icon">🔅</span>
+        <div class="tip-text">
+          <strong>睡前两小时调暗灯光</strong>
+          <span>蓝光（手机、平板发出的那种）会直接抑制褪黑素分泌。睡前关掉大灯，换成暖色小灯，减少屏幕时间。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tip-icon">🌑</span>
+        <div class="tip-text">
+          <strong>睡觉时保持黑暗</strong>
+          <span>遮光帘非常值得投资。如果孩子怕全黑，可以用红光或琥珀色小夜灯，这类光线对节律影响最小。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tip-icon">🎵</span>
+        <div class="tip-text">
+          <strong>白噪音遮盖突发声音</strong>
+          <span>自闭症孩子对背景噪音非常敏感。风扇或白噪音机器能提供稳定的声音环境，降低大脑的警觉反应。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tip-icon">🛏️</span>
+        <div class="tip-text">
+          <strong>加重毯提供深层安抚</strong>
+          <span>体重 10% 左右重量的加重毯能给身体「被包裹」的感觉，激活副交感神经，帮助孩子放松下来。</span>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Section 3 -->
+    <div class="section-title">
+      <span class="icon">📋</span>
+      <h2>用「可预测」对抗焦虑</h2>
+    </div>
+
+    <p>自闭症孩子往往特别依赖规律和可预测性。睡前的「未知感」——不知道接下来要发生什么——本身就会引发焦虑，让入睡更难。</p>
+
+    <p>视觉日程表是一个很有效的工具：用图片或照片把睡前的每一步展示出来——洗澡 → 换衣服 → 刷牙 → 读绘本 → 拥抱 → 熄灯。每完成一步，让孩子自己把那张图翻过去或摘下来，给他一种「在进行中」的掌控感。</p>
+
+    <div class="highlight-box">
+      <div class="label">🌿 一个特别有效的方法：就寝时间衰减法</div>
+      <p>先观察孩子实际上几点睡着（比如 11 点），而不是你希望他几点睡。把第一晚的上床时间设在他通常睡着的时间再晚一点点（比如 11:15）。因为孩子这时确实困了，通常很快就能入睡。之后每连续 3 晚顺利入睡，就把上床时间提前 15 分钟。重复，直到达到理想时间。关键是：无论几点睡着，早晨唤醒时间要固定。</p>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section-title">
+      <span class="icon">☀️</span>
+      <h2>白天的节奏也很重要</h2>
+    </div>
+
+    <p>要让夜晚的生物钟信号够强，白天的「觉醒信号」也要够强。两者形成对比，节律才能稳固。</p>
+
+    <ul class="tip-list">
+      <li>
+        <span class="tip-icon">🏃</span>
+        <div class="tip-text">
+          <strong>规律的户外运动</strong>
+          <span>中等强度的有氧运动（跑步、游泳、蹦床）既能消耗能量，又能接收自然光信号。下午 4 点前完成较剧烈的运动。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tip-icon">🍽️</span>
+        <div class="tip-text">
+          <strong>固定用餐时间</strong>
+          <span>吃饭本身就是一种校准生物钟的信号。每天同一时间吃早餐和晚餐，帮助身体建立规律。</span>
+        </div>
+      </li>
+      <li>
+        <span class="tip-icon">🚫</span>
+        <div class="tip-text">
+          <strong>下午起不喝含咖啡因的饮品</strong>
+          <span>奶茶、可乐、巧克力饮料都算。自闭症孩子代谢咖啡因可能比普通孩子更慢，影响更持久。</span>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Section 5 -->
+    <div class="section-title">
+      <span class="icon">💊</span>
+      <h2>关于褪黑素</h2>
+    </div>
+
+    <p>褪黑素不是安眠药。它更像是一个「天黑信号」——告诉大脑：现在是夜晚，可以准备睡觉了。对于很多自闭症孩子来说，在医生同意的前提下补充小剂量的褪黑素（一般从 0.5mg 开始），在睡前 30-60 分钟服用，能明显缩短入睡时间。</p>
+
+    <p>如果孩子不只是入睡慢，还会在半夜频繁醒来，医生可能会建议使用「控释型」褪黑素，效果更持久。记得和孩子的主治医生确认剂量和时间。</p>
+
+    <div class="scripture-box">
+      <div class="verse">「他赐给所亲爱的，必然安睡。」</div>
+      <div class="ref">— 诗篇 127:2</div>
+    </div>
+
+    <p>带着一个睡眠困难的孩子，每天晚上都是消耗。我写这篇文章，不是要给你一个「完美解决方案」，而是想说：这背后有真实的科学原因，你看到的那些困难是真实的，你不需要独自扛着这些。</p>
+
+    <p>慢慢来。不是每个方法都适合每个孩子，也不是所有事都要一次到位。找到几个对你们家最有用的，先稳定下来，再一点一点往前走。</p>
+
+  </div>
+
+  <!-- Card Section -->
+  <div class="card-section">
+    <div class="card-section-header">
+      <div class="label">📋 实用工具</div>
+      <h3>每日作息参考卡</h3>
+      <p>把上面的内容整理成一张可以贴在家里的卡片 ↓</p>
+    </div>
+    <div class="card-embed">
+      <iframe
+        src="https://bloomlikecrocus.com/sleep-routine-card-2.html"
+        height="900"
+        scrolling="no"
+        title="每日作息卡">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <div class="flower-row">🌸 🌿 🌸</div>
+    <p>「旷野和干旱之地必然欢喜，沙漠也必快乐，又像玫瑰开花。」<br>
+    愿你家的夜晚，一点一点地，变得安静而温柔。</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2026 Blossom Like Crocus · 如番红花绽放 · Kingston, Tasmania 🇦🇺
+</footer>
+
+</body>
+</html>
