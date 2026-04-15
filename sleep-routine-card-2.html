@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日作息卡 · Daily Routine Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sunrise: #FFF0D4;
+    --morning: #FFE2A8;
+    --day: #E8F4FD;
+    --evening: #E8DFF5;
+    --night: #2D2B55;
+    --night-soft: #3D3A6E;
+    --accent-warm: #F4A261;
+    --accent-cool: #7EB8DA;
+    --accent-purple: #B08BD3;
+    --text-dark: #2C2C3A;
+    --text-light: #F0EEF6;
+    --card-radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', 'Noto Sans SC', sans-serif;
+    background: linear-gradient(170deg, #FFF8ED 0%, #F0E8F8 40%, #E0E8F8 70%, #D8DFF0 100%);
+    min-height: 100vh;
+    padding: 20px 16px 40px;
+    color: var(--text-dark);
+  }
+
+  .container {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding: 24px 16px;
+    background: linear-gradient(135deg, #FFF5E1 0%, #FCE8F0 50%, #E8E0F8 100%);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(244,162,97,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+
+  .header .subtitle {
+    font-size: 13px;
+    color: #8E7BA6;
+    font-weight: 600;
+  }
+
+  .header .stars {
+    font-size: 11px;
+    letter-spacing: 6px;
+    margin-top: 8px;
+    opacity: 0.5;
+  }
+
+  /* Phase Sections */
+  .phase {
+    margin-bottom: 16px;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .phase-header {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+  }
+
+  .phase-header .icon {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .phase-header .label-cn {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 700;
+  }
+
+  .phase-header .label-en {
+    font-size: 11px;
+    font-weight: 600;
+    opacity: 0.6;
+    margin-left: auto;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Morning */
+  .phase.morning .phase-header {
+    background: linear-gradient(90deg, var(--sunrise), var(--morning));
+    color: #7A5C2E;
+  }
+  .phase.morning .phase-body { background: #FFFBF2; }
+
+  /* Daytime */
+  .phase.daytime .phase-header {
+    background: linear-gradient(90deg, #D6EEFF, var(--day));
+    color: #3A6B8C;
+  }
+  .phase.daytime .phase-body { background: #F8FBFF; }
+
+  /* Evening */
+  .phase.evening .phase-header {
+    background: linear-gradient(90deg, #E8D8F8, var(--evening));
+    color: #6B4F8A;
+  }
+  .phase.evening .phase-body { background: #FBF8FF; }
+
+  /* Night */
+  .phase.night .phase-header {
+    background: linear-gradient(90deg, var(--night), var(--night-soft));
+    color: var(--text-light);
+  }
+  .phase.night .phase-body { background: #F0EEF6; }
+
+  .phase-body {
+    padding: 12px 16px 14px;
+  }
+
+  /* Items */
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item .time {
+    flex-shrink: 0;
+    width: 52px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--accent-warm);
+    padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .phase.daytime .item .time { color: var(--accent-cool); }
+  .phase.evening .item .time { color: var(--accent-purple); }
+  .phase.night .item .time { color: #8B7AA8; }
+
+  .item .emoji {
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .item .desc {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .item .desc .main {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    font-family: 'Noto Sans SC', 'Nunito', sans-serif;
+  }
+
+  .item .desc .detail {
+    font-size: 12px;
+    color: #9A90A8;
+    margin-top: 3px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .item .desc .key-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #FFE8CC, #FFD6A8);
+    color: #8B6530;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+  }
+
+  .phase.daytime .item .desc .key-tag {
+    background: linear-gradient(90deg, #D6EEFF, #BDE0FF);
+    color: #3A6B8C;
+  }
+
+  .phase.evening .item .desc .key-tag {
+    background: linear-gradient(90deg, #E8D8F8, #DCC8F0);
+    color: #6B4F8A;
+  }
+
+  /* Tip Card */
+  .tip-card {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #FFF8ED, #FFF0E0);
+    border: 2px dashed #F4C78E;
+    border-radius: var(--card-radius);
+    padding: 16px;
+  }
+
+  .tip-card h3 {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #8B6530;
+    font-family: 'Noto Sans SC', 'Nunito', sans-serif;
+  }
+
+  .tip-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tip-card li {
+    font-size: 12.5px;
+    line-height: 1.5;
+    padding: 4px 0;
+    color: #6B5A3A;
+    font-weight: 500;
+  }
+
+  .tip-card li::before {
+    content: '💡 ';
+    font-size: 11px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 11px;
+    color: #B0A8C0;
+    font-weight: 600;
+  }
+
+  /* Animation */
+  .phase {
+    animation: fadeSlideIn 0.5s ease both;
+  }
+  .phase:nth-child(2) { animation-delay: 0.1s; }
+  .phase:nth-child(3) { animation-delay: 0.2s; }
+  .phase:nth-child(4) { animation-delay: 0.3s; }
+  .phase:nth-child(5) { animation-delay: 0.4s; }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🌙 每日作息卡</h1>
+    <div class="subtitle">Daily Rhythm · 每天一小步</div>
+    <div class="stars">✦ ✦ ✦</div>
+  </div>
+
+  <!-- MORNING -->
+  <div class="phase morning">
+    <div class="phase-header">
+      <span class="icon">🌅</span>
+      <span class="label-cn">早晨</span>
+      <span class="label-en">Morning</span>
+    </div>
+    <div class="phase-body">
+      <div class="item">
+        <div class="time">起床</div>
+        <div class="emoji">⏰</div>
+        <div class="desc">
+          <div class="main">固定时间起床</div>
+          <div class="detail">先从现在能醒的时间开始，每3-4天提前15分钟</div>
+          <span class="key-tag">⭐ 最关键的一步</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">+10分</div>
+        <div class="emoji">☀️</div>
+        <div class="desc">
+          <div class="main">接触明亮光线 30分钟</div>
+          <div class="detail">去户外、或在光疗灯旁吃早餐<br>（冬天特别重要）</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">+30分</div>
+        <div class="emoji">🥣</div>
+        <div class="desc">
+          <div class="main">吃早餐 + 服药</div>
+          <div class="detail">如医生建议药物改到早上服用</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAYTIME -->
+  <div class="phase daytime">
+    <div class="phase-header">
+      <span class="icon">🌤️</span>
+      <span class="label-cn">白天</span>
+      <span class="label-en">Daytime</span>
+    </div>
+    <div class="phase-body">
+      <div class="item">
+        <div class="time">上午</div>
+        <div class="emoji">📚</div>
+        <div class="desc">
+          <div class="main">学习 / 活动时间</div>
+          <div class="detail">尽量安排在光线好的地方</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">下午</div>
+        <div class="emoji">🚶‍♀️</div>
+        <div class="desc">
+          <div class="main">运动 / 户外活动</div>
+          <div class="detail">散步、游泳等，下午4点前完成较剧烈运动</div>
+          <span class="key-tag">⭐ 帮助巩固节律</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">下午起</div>
+        <div class="emoji">🚫</div>
+        <div class="desc">
+          <div class="main">不喝咖啡因饮品</div>
+          <div class="detail">包括可乐、奶茶、巧克力饮料</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVENING -->
+  <div class="phase evening">
+    <div class="phase-header">
+      <span class="icon">🌆</span>
+      <span class="label-cn">傍晚 · 睡前2小时</span>
+      <span class="label-en">Wind Down</span>
+    </div>
+    <div class="phase-body">
+      <div class="item">
+        <div class="time">-2小时</div>
+        <div class="emoji">🔅</div>
+        <div class="desc">
+          <div class="main">灯光调暗</div>
+          <div class="detail">开暖色小灯，关掉头顶大灯</div>
+          <span class="key-tag">⭐ 给大脑"天黑"信号</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">-2小时</div>
+        <div class="emoji">📱</div>
+        <div class="desc">
+          <div class="main">减少屏幕</div>
+          <div class="detail">iPad开Night Shift + 最低亮度<br>更好：换成听音乐/有声书</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">-1小时</div>
+        <div class="emoji">💊</div>
+        <div class="desc">
+          <div class="main">服褪黑素（如医生同意）</div>
+          <div class="detail">0.5mg起，固定时间吃，不是安眠药，是"天黑信号"</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">-30分</div>
+        <div class="emoji">🛁</div>
+        <div class="desc">
+          <div class="main">洗澡 → 换睡衣 → 安静活动</div>
+          <div class="detail">触感玩具、轻音乐、加重毯</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NIGHT -->
+  <div class="phase night">
+    <div class="phase-header">
+      <span class="icon">🌙</span>
+      <span class="label-cn">入睡</span>
+      <span class="label-en">Sleep</span>
+    </div>
+    <div class="phase-body">
+      <div class="item">
+        <div class="time">关灯</div>
+        <div class="emoji">😴</div>
+        <div class="desc">
+          <div class="main">房间全暗 + 白噪音</div>
+          <div class="detail">遮光窗帘 · 风扇或白噪音机<br>加重毯（体重的10%）</div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="time">夜间</div>
+        <div class="emoji">🌟</div>
+        <div class="desc">
+          <div class="main">如果醒了，不开大灯</div>
+          <div class="detail">用地面小夜灯，不看手机</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tip-card">
+    <h3>📌 给家长的提醒</h3>
+    <ul>
+      <li>周末起床时间偏差不超过1小时</li>
+      <li>每3-4天提前15分钟，不要一步到位</li>
+      <li>先坚持起床时间，入睡会自然跟上</li>
+      <li>预计3-6周看到稳定变化</li>
+      <li>和医生确认抗焦虑药的服药时间</li>
+    </ul>
+  </div>
+
+  <div class="footer">慢慢来，不着急 · Take it one step at a time ✦</div>
+
+</div>
+</body>
+</html>
