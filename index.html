@@ -1598,8 +1598,8 @@ async function savePostToGitHub(filename, content, existingSha) {
     headers: { 'Authorization': `token ${cfg.token}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
-  if (res.status === 401) throw new Error('UNAUTHORIZED');
-  if (!res.ok) throw new Error('SAVE_FAILED');
+  if (res.status === 401) { const e = await res.json().catch(()=>{}); throw new Error('UNAUTHORIZED: ' + (e?.message||'')); }
+  if (!res.ok) { const e = await res.json().catch(()=>{}); throw new Error('SAVE_FAILED ' + res.status + ': ' + (e?.message||'')); }
   return await res.json();
 }
 
