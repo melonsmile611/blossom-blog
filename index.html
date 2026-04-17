@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blossom Like Crocus — 如番红花绽放</title>
-<!-- 字体异步加载，不阻塞页面渲染 -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -45,6 +43,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ============ NAVIGATION ============ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 18px 40px;
@@ -88,6 +87,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
 .nav-admin-btn::after { display: none !important; }
 .nav-admin-btn:hover { background: var(--sage-dark) !important; color: white !important; }
 
+/* ============ HERO ============ */
 .hero {
   min-height: 100vh; display: flex; flex-direction: column;
   justify-content: center; align-items: center;
@@ -150,6 +150,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   box-shadow: 0 8px 24px rgba(139,158,126,0.25);
 }
 
+/* ============ SCRIPTURE ============ */
 .scripture {
   padding: 80px 24px;
   text-align: center;
@@ -172,6 +173,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   font-style: normal; letter-spacing: 0.08em;
 }
 
+/* ============ SECTIONS COMMON ============ */
 .section { padding: 100px 24px; }
 .section-header {
   text-align: center; margin-bottom: 60px;
@@ -188,6 +190,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   letter-spacing: 0.15em;
 }
 
+/* ============ CONTENT GRID ============ */
 .content-grid {
   max-width: 1100px; margin: 0 auto;
   display: grid;
@@ -264,6 +267,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   font-size: 0.7rem;
 }
 
+/* ============ TOPICS GRID ============ */
 .topics-section { background: var(--warm-white); border-top: 1px solid var(--border); }
 .topics-grid {
   max-width: 900px; margin: 0 auto;
@@ -307,6 +311,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   line-height: 1.5;
 }
 
+/* ============ FILTER BAR ============ */
 .filter-bar {
   max-width: 1100px; margin: 0 auto 32px;
   display: flex; gap: 8px; flex-wrap: wrap;
@@ -329,49 +334,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   border-color: var(--sage);
 }
 
-.view-toggle {
-  max-width: 1100px; margin: -16px auto 24px;
-  display: flex; justify-content: flex-end; gap: 6px;
-}
-.view-btn {
-  background: white; border: 1px solid var(--border);
-  border-radius: 8px; padding: 6px 12px;
-  cursor: pointer; font-size: 1rem; color: var(--ink-light);
-  transition: var(--transition); line-height: 1;
-}
-.view-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
-.view-btn:hover:not(.active) { border-color: var(--sage); color: var(--sage-dark); }
-
-.content-list {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; flex-direction: column;
-}
-.list-item {
-  display: flex; align-items: center; gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer; transition: var(--transition);
-}
-.list-item:hover { background: rgba(139,158,126,0.04); margin: 0 -12px; padding: 14px 12px; border-radius: 8px; border-bottom-color: transparent; }
-.list-info { flex: 1; min-width: 0; }
-.list-title {
-  font-family: var(--font-cn); font-size: 1rem; font-weight: 500;
-  color: var(--ink); line-height: 1.4; margin-bottom: 3px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.list-foot {
-  display: flex; align-items: center; gap: 8px; margin-top: 5px;
-}
-.list-tag {
-  font-family: var(--font-cn); font-size: 0.68rem;
-  padding: 2px 8px; border-radius: 10px;
-}
-.list-date { font-family: var(--font-cn); font-size: 0.7rem; color: var(--earth-light); }
-
-/* hide/show logic */
-.content-grid.hidden { display: none; }
-.content-list.hidden { display: none; }
-
+/* ============ EMPTY STATE ============ */
 .empty-state {
   text-align: center; padding: 80px 24px;
   color: var(--ink-light);
@@ -389,6 +352,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   margin-top: 8px;
 }
 
+/* ============ ABOUT ============ */
 .about-section {
   background: var(--warm-white);
   border-top: 1px solid var(--border);
@@ -449,6 +413,7 @@ nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
   box-shadow: 0 4px 16px rgba(192,57,43,0.2);
 }
 
+/* ============ FOOTER ============ */
 footer {
   padding: 40px 24px;
   text-align: center;
@@ -474,6 +439,7 @@ footer p {
 .footer-links a:hover { color: var(--sage-dark); }
 .footer-links span { color: var(--border); font-size: 0.7rem; }
 
+/* ============ ARTICLE READER MODAL ============ */
 .modal-overlay {
   display: none; position: fixed; inset: 0; z-index: 200;
   background: rgba(44,44,44,0.5);
@@ -537,6 +503,7 @@ footer p {
   max-width: 100%;
 }
 
+/* ============ ADMIN PANEL ============ */
 .admin-overlay {
   display: none; position: fixed; inset: 0; z-index: 300;
   background: var(--cream);
@@ -833,6 +800,7 @@ footer p {
 }
 .settings-row button:hover { background: var(--sage-dark); }
 
+/* ============ ANIMATIONS ============ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
@@ -841,11 +809,8 @@ footer p {
   from { opacity: 0; transform: translateY(32px) scale(0.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
 
+/* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
   nav { padding: 14px 20px; }
   .nav-links { gap: 16px; }
@@ -902,21 +867,18 @@ footer p {
     <h2>Words in Bloom</h2>
     <p class="section-sub" id="articlesSubtitle">最新文章</p>
   </div>
+  <!-- Filter pills -->
   <div class="filter-bar" id="filterBar">
     <button class="filter-pill active" onclick="filterByTopic('all', this)">全部</button>
-    <button class="filter-pill" onclick="filterByTopic('AI极简', this)">⭐️ AI极简</button>
+    <button class="filter-pill" onclick="filterByTopic('AI极简', this)">🤖 AI极简</button>
     <button class="filter-pill" onclick="filterByTopic('帕金森', this)">🧠 帕金森</button>
     <button class="filter-pill" onclick="filterByTopic('儿童自闭症', this)">🧩 自闭症</button>
     <button class="filter-pill" onclick="filterByTopic('圣经', this)">📖 圣经</button>
     <button class="filter-pill" onclick="filterByTopic('YouTube', this)">▶️ YouTube</button>
   </div>
-  <div class="view-toggle">
-    <button class="view-btn active" id="btnList" onclick="setView('list')" title="列表视图">☰</button>
-    <button class="view-btn" id="btnGrid" onclick="setView('grid')" title="卡片视图">⊞</button>
+  <div class="content-grid" id="contentGrid">
+    <!-- Dynamic content -->
   </div>
-  <!-- List view (default) -->
-  <div class="content-list" id="contentList"></div>
-  <div class="content-grid hidden" id="contentGrid"></div>
 </section>
 
 <!-- ============ TOPICS ============ -->
@@ -932,7 +894,7 @@ footer p {
       <p>所有内容</p>
     </div>
     <div class="topic-card" onclick="filterByTopic('AI极简')" data-topic="AI极简">
-      <div class="topic-icon">⭐️</div>
+      <div class="topic-icon">🤖</div>
       <h3>AI 极简生活</h3>
       <p>低能量人群的极简AI指南</p>
     </div>
@@ -995,6 +957,7 @@ footer p {
 
 <!-- ============ ADMIN PANEL ============ -->
 <div class="admin-overlay" id="adminPanel">
+  <!-- Login Screen -->
   <div class="login-screen" id="loginScreen">
     <div class="login-box">
       <div class="login-icon">🌸</div>
@@ -1005,6 +968,8 @@ footer p {
       <p class="login-error" id="loginError">密码错误，请重试</p>
     </div>
   </div>
+
+  <!-- Dashboard -->
   <div class="admin-dashboard" id="adminDashboard">
     <div class="admin-header">
       <h2>🌸 管理后台</h2>
@@ -1014,15 +979,20 @@ footer p {
       </div>
     </div>
     <div class="admin-body">
+      <!-- Tabs -->
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchAdminTab('posts', this)">全部内容</button>
         <button class="admin-tab" onclick="switchAdminTab('editor', this)">编辑器</button>
         <button class="admin-tab" onclick="switchAdminTab('settings', this)">设置</button>
       </div>
+
+      <!-- Posts Tab -->
       <div class="posts-panel admin-panel-view" id="postsPanel">
         <div class="posts-list" id="postsList">
         </div>
       </div>
+
+      <!-- Editor Tab -->
       <div class="editor-panel admin-panel-view" id="editorPanel">
         <div class="editor-field">
           <label>内容类型</label>
@@ -1041,7 +1011,7 @@ footer p {
           <div class="editor-field">
             <label>标签 / 分类</label>
             <select id="editorTag">
-              <option value="AI极简">⭐️ AI极简生活</option>
+              <option value="AI极简">🤖 AI极简生活</option>
               <option value="帕金森">🧠 帕金森关爱</option>
               <option value="儿童自闭症">🧩 儿童自闭症</option>
               <option value="圣经">📖 圣经与信仰</option>
@@ -1063,20 +1033,14 @@ footer p {
           <p class="tiktok-url-note" id="videoUrlHint">💡 支持 TikTok 和 YouTube 链接，粘贴完整视频链接即可</p>
           <p class="tiktok-url-note" id="videoUrlStatus" style="display:none;margin-top:4px;"></p>
         </div>
+
+        <!-- Cover image URL -->
         <div class="editor-field" id="coverField">
-          <label>封面图片（可选）</label>
-          <input type="text" id="editorCover"
-            placeholder="images/你的图片.jpg"
-            oninput="previewCover(this.value)">
-          <p style="font-family:var(--font-cn);font-size:0.72rem;color:var(--sage);margin-top:6px;line-height:1.7;">
-            💡 把图片上传到 GitHub 的 <strong>images</strong> 文件夹，这里填 <strong>images/文件名.jpg</strong> 就好
-          </p>
-          <div id="coverPreviewBox" style="display:none;margin-top:10px;">
-            <img id="coverPreviewImg"
-              style="width:100%;max-height:160px;object-fit:cover;border-radius:8px;border:1px solid var(--border);">
-            <p id="coverPreviewErr" style="display:none;font-family:var(--font-cn);font-size:0.72rem;color:#c0392b;margin-top:4px;">⚠️ 图片暂时无法预览（上传到 GitHub 后才能显示）</p>
-          </div>
+          <label>封面图片链接（可选）</label>
+          <input type="text" id="editorCover" placeholder="https://... 图片URL">
         </div>
+
+        <!-- Article body -->
         <div class="editor-field" id="bodyField">
           <label>正文内容</label>
           <div class="editor-toolbar">
@@ -1090,6 +1054,8 @@ footer p {
           </div>
           <textarea id="editorBody" placeholder="在这里写你的文章...&#10;&#10;支持简单的 Markdown 格式：&#10;## 标题&#10;**粗体** *斜体*&#10;> 引用&#10;![图片](链接)"></textarea>
         </div>
+
+        <!-- Quote-specific field -->
         <div class="editor-field" id="quoteSourceField" style="display:none;">
           <label>出处</label>
           <input type="text" id="editorQuoteSource" placeholder="— 来源 / 作者">
@@ -1103,34 +1069,13 @@ footer p {
           <button onclick="cancelEditor()">取消</button>
         </div>
       </div>
+
+      <!-- Settings Tab -->
       <div class="settings-panel admin-panel-view" id="settingsPanel">
-        <div class="settings-group">
-          <h3>⚙️ GitHub 仓库设置</h3>
-          <div class="settings-row">
-            <label>GitHub 用户名</label>
-            <input type="text" id="ghUser" placeholder="例如：melonsmile611">
-          </div>
-          <div class="settings-row">
-            <label>仓库名称</label>
-            <input type="text" id="ghRepo" placeholder="例如：blossom-blog">
-          </div>
-          <div class="settings-row">
-            <label>GitHub Token（发布文章需要）</label>
-            <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxx">
-          </div>
-          <div class="settings-row">
-            <label style="font-size:0.72rem;color:var(--sage);line-height:1.6;">
-              Token 获取：GitHub → 右上角头像 → Settings →<br>
-              Developer settings → Personal access tokens →<br>
-              Tokens (classic) → Generate → 勾选 repo → 复制
-            </label>
-            <button onclick="saveGithubSettings()">保存设置</button>
-          </div>
-        </div>
         <div class="settings-group">
           <h3>🔐 修改密码</h3>
           <div class="settings-row">
-            <label>新密码（默认：crocus）</label>
+            <label>新密码</label>
             <input type="password" id="newPassword" placeholder="输入新密码">
           </div>
           <div class="settings-row">
@@ -1139,10 +1084,18 @@ footer p {
           </div>
         </div>
         <div class="settings-group">
-          <h3>📦 数据备份</h3>
+          <h3>📦 数据管理</h3>
           <div class="settings-row">
             <label>导出所有文章为 JSON</label>
             <button onclick="exportData()">导出</button>
+          </div>
+          <div class="settings-row">
+            <label>从 JSON 文件导入</label>
+            <button onclick="importData()">导入</button>
+          </div>
+          <div class="settings-row">
+            <label style="color:#c0392b;">清空所有内容</label>
+            <button style="background:#c0392b;" onclick="clearAllData()">清空</button>
           </div>
         </div>
       </div>
@@ -1154,98 +1107,41 @@ footer p {
 
 <script>
 // ============================================================
-// CONFIG — GitHub 仓库信息（存在 localStorage）
+// DATA LAYER — localStorage
 // ============================================================
-const CFG_KEY  = 'blossom_gh_config';
+const STORAGE_KEY = 'blossom_posts';
 const PASS_KEY = 'blossom_admin_pass';
 
-function getConfig() { try { return JSON.parse(localStorage.getItem(CFG_KEY)) || {}; } catch { return {}; } }
-function saveConfig(cfg) { localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); }
-
-function rawBase() {
-  const c = getConfig();
-  return c.user && c.repo ? `https://raw.githubusercontent.com/${c.user}/${c.repo}/main/posts` : '';
-}
-function apiUrl() {
-  const c = getConfig();
-  return c.user && c.repo ? `https://api.github.com/repos/${c.user}/${c.repo}/contents/posts` : '';
-}
-
+// Default password: crocus (SHA-like simple hash for demo)
 function simpleHash(str) {
   let h = 0;
-  for (let i = 0; i < str.length; i++) h = Math.imul(31, h) + str.charCodeAt(i) | 0;
+  for (let i = 0; i < str.length; i++) {
+    h = ((h << 5) - h) + str.charCodeAt(i);
+    h |= 0;
+  }
   return h.toString(36);
 }
-function getPassHash() { return localStorage.getItem(PASS_KEY) || simpleHash('crocus'); }
+
+function getPassword() {
+  return localStorage.getItem(PASS_KEY) || simpleHash('crocus');
+}
+
+function getPosts() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  } catch { return []; }
+}
+
+function savePosts(posts) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+}
 
 // ============================================================
-// FETCH POSTS from GitHub posts/ folder
-// 优化：GitHub API 列表已包含 sha，用 download_url 并行拿内容
+// NAVIGATION
 // ============================================================
-let _cache = null, _cacheTime = 0;
-const CACHE_TTL = 120000; // 2分钟缓存
-
-async function getPosts(force = false) {
-  const now = Date.now();
-  if (!force && _cache && (now - _cacheTime) < CACHE_TTL) return _cache;
-  const c = getConfig();
-  if (!c.user || !c.repo) return [];
-  const listUrl = `https://api.github.com/repos/${c.user}/${c.repo}/contents/posts`;
-  try {
-    const res = await fetch(listUrl);
-    if (!res.ok) return [];
-    const files = await res.json();
-    if (!Array.isArray(files)) return [];
-    const mdFiles = files.filter(f => f.name.endsWith('.md') && f.type === 'file');
-    if (mdFiles.length === 0) return [];
-    // 并行请求所有文件内容
-    const posts = (await Promise.all(mdFiles.map(f => fetchOneMd(f)))).filter(Boolean);
-    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    _cache = posts; _cacheTime = now;
-    return posts;
-  } catch(e) { return _cache || []; }
-}
-
-async function fetchOneMd(file) {
-  try {
-    // 优先用 download_url（GitHub CDN，比 raw 快）
-    const url = file.download_url || `${rawBase()}/${file.name}`;
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    const text = await res.text();
-    const fm = parseFrontmatter(text);
-    if (!fm.title) return null;
-    return { ...fm, id: file.sha.slice(0,16), filename: file.name, _body: extractBody(text) };
-  } catch { return null; }
-}
-
-function parseFrontmatter(md) {
-  const m = md.match(/^---\s*\n([\s\S]*?)\n---/);
-  if (!m) return {};
-  const fm = {};
-  m[1].split('\n').forEach(line => {
-    const idx = line.indexOf(':');
-    if (idx < 0) return;
-    const k = line.slice(0,idx).trim();
-    const v = line.slice(idx+1).trim().replace(/^["']|["']$/g,'');
-    if (k) fm[k] = v;
-  });
-  return fm;
-}
-function extractBody(md) { return md.replace(/^---[\s\S]*?---\n?/,'').trim(); }
-
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
 });
-
-let currentView = 'list';
-function setView(v) {
-  currentView = v;
-  document.getElementById('btnList').classList.toggle('active', v === 'list');
-  document.getElementById('btnGrid').classList.toggle('active', v === 'grid');
-  document.getElementById('contentList').classList.toggle('hidden', v !== 'list');
-  document.getElementById('contentGrid').classList.toggle('hidden', v !== 'grid');
-}
 
 // ============================================================
 // RENDER FRONT-END CONTENT
@@ -1254,154 +1150,156 @@ let currentFilter = 'all';
 
 function filterByTopic(topic, btnEl) {
   currentFilter = topic;
+  // Update filter pills
   document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-  if (btnEl) btnEl.classList.add('active');
-  else document.querySelectorAll('.filter-pill').forEach(p => {
-    if ((topic==='all' && p.textContent.trim()==='全部') || p.textContent.includes(topic)) p.classList.add('active');
+  if (btnEl) {
+    btnEl.classList.add('active');
+  } else {
+    document.querySelectorAll('.filter-pill').forEach(p => {
+      if ((topic === 'all' && p.textContent.trim() === '全部') ||
+          p.textContent.includes(topic)) p.classList.add('active');
+    });
+  }
+  // Update topic cards
+  document.querySelectorAll('.topic-card').forEach(c => {
+    c.classList.toggle('active-topic', c.dataset.topic === topic);
   });
-  document.querySelectorAll('.topic-card').forEach(c => c.classList.toggle('active-topic', c.dataset.topic === topic));
-  document.getElementById('articlesSubtitle').textContent = topic === 'all' ? '最新文章' : topic;
-  document.getElementById('articles').scrollIntoView({ behavior:'smooth', block:'start' });
+  // Update subtitle
+  const sub = document.getElementById('articlesSubtitle');
+  sub.textContent = topic === 'all' ? '最新文章' : topic;
+  // Scroll to articles
+  document.getElementById('articles').scrollIntoView({ behavior: 'smooth', block: 'start' });
   renderContent();
 }
 
-async function renderContent() {
-  const list = document.getElementById('contentList');
+function renderContent() {
   const grid = document.getElementById('contentGrid');
+  let posts = getPosts().sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Skeleton
-  const skeletonList = [1,2,3,4,5].map(() => `
-    <div class="list-item" style="pointer-events:none;">
-      <div class="list-thumb thumb-gradient" style="animation:shimmer 1.5s infinite;background:linear-gradient(90deg,#f0ede8 25%,#e8e4de 50%,#f0ede8 75%);background-size:200% 100%;"></div>
-      <div class="list-info">
-        <div style="height:16px;background:#f0ede8;border-radius:4px;width:70%;margin-bottom:8px;"></div>
-        <div style="height:12px;background:#f0ede8;border-radius:4px;width:45%;"></div>
-      </div>
-    </div>`).join('');
-  list.innerHTML = skeletonList;
-  grid.innerHTML = [1,2,3].map(() => `
-    <div style="background:white;border-radius:12px;border:1px solid var(--border);overflow:hidden;">
-      <div style="height:200px;background:linear-gradient(90deg,#f0ede8 25%,#e8e4de 50%,#f0ede8 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;"></div>
-      <div style="padding:24px;"><div style="height:18px;background:#f0ede8;border-radius:4px;margin-bottom:10px;width:80%;"></div><div style="height:14px;background:#f0ede8;border-radius:4px;width:55%;"></div></div>
-    </div>`).join('');
-
-  let posts = await getPosts();
-  if (currentFilter !== 'all') posts = posts.filter(p => p.tag === currentFilter);
+  if (currentFilter !== 'all') {
+    posts = posts.filter(p => p.tag === currentFilter);
+  }
 
   if (posts.length === 0) {
-    const cfg = getConfig();
-    const msg = !cfg.user ? '还未连接 GitHub 仓库，请进入管理后台设置' : (currentFilter === 'all' ? '还没有内容，一切即将绽放...' : `「${currentFilter}」分类暂无内容`);
-    const empty = `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">🌱</div><p>${msg}</p><p class="hint">点击右上角「管理」登录后台发布内容</p></div>`;
-    list.innerHTML = empty;
-    grid.innerHTML = empty;
+    const msg = currentFilter === 'all'
+      ? '还没有内容，一切即将绽放...'
+      : `「${currentFilter}」分类暂无内容`;
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1 / -1;">
+        <div class="empty-icon">🌱</div>
+        <p>${msg}</p>
+        <p class="hint">点击右上角「管理」登录后台发布内容</p>
+      </div>`;
     return;
   }
 
-  // --- LIST VIEW ---
-  list.innerHTML = posts.map(post => {
-    const tagStyle = getTagStyle(post.tag);
-    const tagHtml = post.tag ? `<span class="list-tag" style="${tagStyle}">${post.tag}</span>` : '';
-    return `<div class="list-item" onclick="openPost('${post.id}')">
-      <div class="list-info">
-        <div class="list-title">${escHtml(post.title)}</div>
-        <div class="list-foot">${tagHtml}<span class="list-date">${post.date || ''}</span></div>
-      </div>
-    </div>`;
-  }).join('');
-
-  // --- GRID / CARD VIEW ---
   grid.innerHTML = posts.map(post => {
     const coverHtml = getCoverHtml(post);
     const tagHtml = post.tag ? `<span class="card-tag" style="${getTagStyle(post.tag)}">${post.tag}</span>` : '';
-    const typeLabel = { article:'文章', youtube:'YouTube', quote:'短句' }[post.type] || '文章';
-    return `<div class="content-card" onclick="openPost('${post.id}')">
-      <span class="card-type-badge">${typeLabel}</span>
-      ${coverHtml}
-      <div class="card-body">
-        <h3>${escHtml(post.title)}</h3>
-        <p>${escHtml(post.excerpt || '')}</p>
-        <div class="card-meta">${tagHtml}<span>${post.date || ''}</span></div>
-      </div>
-    </div>`;
+    const typeLabel = { article: '文章', youtube: 'YouTube', quote: '短句' }[post.type] || '文章';
+
+    return `
+      <div class="content-card" onclick="openPost('${post.id}')">
+        <span class="card-type-badge">${typeLabel}</span>
+        ${coverHtml}
+        <div class="card-body">
+          <h3>${escHtml(post.title)}</h3>
+          <p>${escHtml(post.excerpt || '')}</p>
+          <div class="card-meta">
+            ${tagHtml}
+            <span>${post.date || ''}</span>
+          </div>
+        </div>
+      </div>`;
   }).join('');
-
-  // Lazy load images
-  if ('IntersectionObserver' in window) {
-    document.querySelectorAll('img[data-src]').forEach(img => {
-      new IntersectionObserver(([e], obs) => {
-        if (e.isIntersecting) { img.src = img.dataset.src; img.removeAttribute('data-src'); obs.disconnect(); }
-      }, { rootMargin: '100px' }).observe(img);
-    });
-  } else {
-    document.querySelectorAll('img[data-src]').forEach(img => { img.src = img.dataset.src; });
-  }
 }
 
+// Tag-specific color styles
 function getTagStyle(tag) {
-  const s = { 'AI极简':'background:#e0ecf8;color:#3a6fa0;','帕金森':'background:#ede0f0;color:#7a5490;','儿童自闭症':'background:#fce8d5;color:#b07830;','圣经':'background:#e4eddf;color:#5e7352;','YouTube':'background:#fde8e8;color:#c0392b;' };
-  return s[tag] || '';
+  const styles = {
+    'AI极简': 'background:#e0ecf8;color:#3a6fa0;',
+    '帕金森': 'background:#ede0f0;color:#7a5490;',
+    '儿童自闭症': 'background:#fce8d5;color:#b07830;',
+    '圣经': 'background:#e4eddf;color:#5e7352;',
+    'YouTube': 'background:#fde8e8;color:#c0392b;',
+  };
+  return styles[tag] || '';
 }
 
-const topicCovers = { 'AI极简':'linear-gradient(135deg,#d4e4f7,#a8c8e8)','帕金森':'linear-gradient(135deg,#e4d6ec,#c8a8d8)','儿童自闭症':'linear-gradient(135deg,#fde8d0,#f0c88c)','圣经':'linear-gradient(135deg,#d8e8d0,#b0c8a0)','YouTube':'linear-gradient(135deg,#c0392b,#8e2020)' };
-const topicIcons  = { 'AI极简':'⭐️','帕金森':'🧠','儿童自闭症':'🧩','圣经':'📖','YouTube':'▶️' };
-
-function extractYoutubeId(str) {
-  if (!str) return '';
-  const m = str.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/);
-  return m ? m[1] : '';
-}
+// Topic-specific cover gradients
+const topicCovers = {
+  'AI极简': 'linear-gradient(135deg,#d4e4f7,#a8c8e8)',
+  '帕金森': 'linear-gradient(135deg,#e4d6ec,#c8a8d8)',
+  '儿童自闭症': 'linear-gradient(135deg,#fde8d0,#f0c88c)',
+  '圣经': 'linear-gradient(135deg,#d8e8d0,#b0c8a0)',
+  'YouTube': 'linear-gradient(135deg,#c0392b,#8e2020)',
+};
+const topicIcons = {
+  'AI极简': '🤖',
+  '帕金森': '🧠',
+  '儿童自闭症': '🧩',
+  '圣经': '📖',
+  'YouTube': '▶️',
+};
 
 function getCoverHtml(post) {
-  const cfg = getConfig();
+  // YouTube: show video thumbnail
+  if (post.type === 'youtube' && post.videoUrl) {
+    const ytId = extractYoutubeId(post.videoUrl);
+    if (ytId) {
+      return `<img class="card-cover" src="https://img.youtube.com/vi/${ytId}/mqdefault.jpg" alt="" 
+        onerror="this.outerHTML=getDefaultCover('youtube','${post.tag || ''}');">`;
+    }
+  }
   if (post.cover) {
-    const src = post.cover.startsWith('http') ? post.cover
-      : `https://raw.githubusercontent.com/${cfg.user}/${cfg.repo}/main/${post.cover}`;
-    return `<div class="card-cover" style="overflow:hidden;padding:0;">
-      <img data-src="${escHtml(src)}" src="" style="width:100%;height:100%;object-fit:cover;display:block;"
-        onerror="imgFallback(this,'${post.type||'article'}','${post.tag||''}')"></div>`;
+    return `<img class="card-cover" src="${escHtml(post.cover)}" alt="" onerror="this.className='card-cover article-cover';this.outerHTML=getDefaultCover('${post.type}','${post.tag || ''}');">`;
   }
-  if (post.type === 'youtube') {
-    const ytId = extractYoutubeId(post.video_url||'') || extractYoutubeId(post.videoUrl||'') || extractYoutubeId(post._body||'');
-    if (ytId) return `<div class="card-cover" style="position:relative;overflow:hidden;background:#111;padding:0;">
-      <img data-src="https://img.youtube.com/vi/${ytId}/mqdefault.jpg" src="" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-        <div style="width:52px;height:52px;border-radius:50%;background:rgba(192,57,43,0.9);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;padding-left:3px;">▶</div>
-      </div></div>`;
-    return `<div class="card-cover youtube-cover"></div>`;
-  }
-  if (post.type === 'quote') return `<div class="card-cover article-cover" style="background:linear-gradient(135deg,#E8D5A8,#C9A96E);">✨</div>`;
-  const bg = topicCovers[post.tag] || 'linear-gradient(135deg,#F5E6DF,#C5D4B8)';
-  return `<div class="card-cover article-cover" style="background:${bg};">${topicIcons[post.tag]||'🌿'}</div>`;
+  return getDefaultCover(post.type, post.tag);
 }
 
-function imgFallback(img, type, tag) {
-  img.onerror = null;
+function getDefaultCover(type, tag) {
+  if (type === 'youtube') return `<div class="card-cover youtube-cover"></div>`;
+  if (type === 'quote') return `<div class="card-cover article-cover" style="background:linear-gradient(135deg,#E8D5A8,#C9A96E);">✨</div>`;
   const bg = topicCovers[tag] || 'linear-gradient(135deg,#F5E6DF,#C5D4B8)';
   const icon = topicIcons[tag] || '🌿';
-  img.parentElement.innerHTML = `<div class="card-cover article-cover" style="background:${bg};">${icon}</div>`;
+  return `<div class="card-cover article-cover" style="background:${bg};">${icon}</div>`;
 }
 
-async function openPost(id) {
-  const posts = await getPosts();
-  const post = posts.find(p => p.id === id);
+// ============================================================
+// OPEN POST (Reader)
+// ============================================================
+function openPost(id) {
+  const post = getPosts().find(p => p.id === id);
   if (!post) return;
 
   const body = document.getElementById('readerBody');
   let html = `<h1>${escHtml(post.title)}</h1>`;
-  html += `<div class="article-meta-top">${post.tag||''} · ${post.date||''}</div>`;
+  html += `<div class="article-meta-top">${post.tag || ''} · ${post.date || ''}</div>`;
 
-  const videoUrl = post.video_url || post.videoUrl || '';
+  const videoUrl = post.videoUrl || '';
+
+  // YouTube embed
   if (post.type === 'youtube' && videoUrl) {
     const ytId = extractYoutubeId(videoUrl);
-    if (ytId) html += `<div class="video-embed-wrapper"><iframe width="100%" height="400" style="max-width:640px;border:none;border-radius:12px;" src="https://www.youtube.com/embed/${ytId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-    else html += `<p style="text-align:center;margin:24px 0;"><a href="${escHtml(videoUrl)}" target="_blank" style="color:var(--sage);">🔗 点击观看 YouTube 视频</a></p>`;
+    if (ytId) {
+      html += `<div class="video-embed-wrapper">
+        <iframe width="100%" height="400" style="max-width:640px;border:none;border-radius:12px;"
+          src="https://www.youtube.com/embed/${ytId}" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+      </div>`;
+    } else {
+      html += `<p style="text-align:center;margin:24px 0;"><a href="${escHtml(videoUrl)}" target="_blank" style="color:var(--sage);text-decoration:underline;">🔗 点击观看 YouTube 视频</a></p>`;
+    }
   }
 
   if (post.type === 'quote') {
-    html += `<blockquote style="font-size:1.3rem;line-height:2;color:var(--ink-light);border-left:3px solid var(--gold);padding-left:20px;margin:32px 0;font-style:italic;">${renderMd(post._body||'')}</blockquote>`;
-    if (post.quoteSource) html += `<p style="text-align:right;color:var(--sage);font-size:0.9rem;">${escHtml(post.quoteSource)}</p>`;
+    html += `<blockquote style="font-size:1.3rem;line-height:2;color:var(--ink-light);border-left:3px solid var(--gold);padding-left:20px;margin:32px 0;font-style:italic;">${renderMd(post.body || '')}</blockquote>`;
+    if (post.quoteSource) {
+      html += `<p style="text-align:right;color:var(--sage);font-size:0.9rem;">${escHtml(post.quoteSource)}</p>`;
+    }
   } else {
-    html += renderMd(post._body || '');
+    html += renderMd(post.body || '');
   }
 
   body.innerHTML = html;
@@ -1414,19 +1312,25 @@ function closeReader() {
   document.body.style.overflow = '';
 }
 
+function extractYoutubeId(url) {
+  // Supports: youtube.com/watch?v=xxx, youtu.be/xxx, youtube.com/embed/xxx, youtube.com/shorts/xxx
+  let m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : '';
+}
+
+// Simple Markdown renderer
 function renderMd(text) {
   return text
-    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
-    .replace(/^## (.+)$/gm,'<h2 style="margin:24px 0 12px;font-family:var(--font-display);font-weight:400;">$1</h2>')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(/^> (.+)$/gm,'<blockquote style="border-left:3px solid var(--sage-light);padding-left:16px;color:var(--ink-light);margin:12px 0;">$1</blockquote>')
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g,'<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:16px 0;">')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" style="color:var(--sage-dark);">$1</a>')
-    .replace(/^---$/gm,'<hr style="border:none;border-top:1px solid var(--border);margin:24px 0;">')
-    .replace(/\n\n/g,'</p><p>')
-    .replace(/^(?!<)/,'<p>')
-    .replace(/(?!>)$/,'</p>');
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2 style="margin:24px 0 12px;font-family:var(--font-display);font-weight:400;">$1</h2>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^> (.+)$/gm, '<blockquote style="border-left:3px solid var(--sage-light);padding-left:16px;color:var(--ink-light);margin:12px 0;">$1</blockquote>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">')
+    .replace(/^---$/gm, '<hr style="border:none;border-top:1px solid var(--border);margin:24px 0;">')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<)/, '<p>')
+    .replace(/(?!>)$/, '</p>');
 }
 
 // ============================================================
@@ -1449,7 +1353,7 @@ function openAdmin(e) {
 
 function doLogin() {
   const input = document.getElementById('loginPassword').value;
-  if (simpleHash(input) === getPassHash()) {
+  if (simpleHash(input) === getPassword()) {
     isLoggedIn = true;
     showDashboard();
   } else {
@@ -1462,17 +1366,12 @@ function doLogin() {
 function showDashboard() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('adminDashboard').style.display = 'block';
-  const cfg = getConfig();
-  if (cfg.user)  document.getElementById('ghUser').value  = cfg.user;
-  if (cfg.repo)  document.getElementById('ghRepo').value  = cfg.repo;
-  if (cfg.token) document.getElementById('ghToken').value = cfg.token;
   renderPostsList();
 }
 
 function closeAdmin() {
   document.getElementById('adminPanel').classList.remove('active');
   document.body.style.overflow = '';
-  _cache = null;
   renderContent();
 }
 
@@ -1482,37 +1381,46 @@ function closeAdmin() {
 function switchAdminTab(tab, btn) {
   document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.admin-panel-view').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
-  const panels = { posts:'postsPanel', editor:'editorPanel', settings:'settingsPanel' };
+  document.querySelectorAll('.admin-panel-view').forEach(p => {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  const panels = { posts: 'postsPanel', editor: 'editorPanel', settings: 'settingsPanel' };
   const el = document.getElementById(panels[tab]);
   if (el) { el.style.display = 'block'; el.classList.add('active'); }
   if (tab === 'posts') renderPostsList();
 }
+
+// initialize tabs
 document.getElementById('postsPanel').style.display = 'block';
 
 // ============================================================
 // ADMIN — POSTS LIST
 // ============================================================
-async function renderPostsList() {
+function renderPostsList() {
   const list = document.getElementById('postsList');
-  list.innerHTML = `<div class="empty-state"><div class="empty-icon">🌸</div><p>加载中...</p></div>`;
-  const posts = await getPosts(true);
+  const posts = getPosts().sort((a, b) => new Date(b.date) - new Date(a.date));
+
   if (posts.length === 0) {
-    const cfg = getConfig();
-    list.innerHTML = `<div class="empty-state"><div class="empty-icon">📝</div><p>${!cfg.user ? '请先在「设置」里填写 GitHub 用户名和仓库名' : '还没有内容，点击「新建内容」开始创作'}</p></div>`;
+    list.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📝</div>
+        <p>还没有内容，点击「新建内容」开始创作</p>
+      </div>`;
     return;
   }
-  const icons = { article:'📝', youtube:'▶️', quote:'✨' };
+
+  const icons = { article: '📝', youtube: '▶️', quote: '✨' };
   list.innerHTML = posts.map(p => `
     <div class="post-item">
-      <div class="post-item-icon ${p.type||'article'}">${icons[p.type]||'📝'}</div>
+      <div class="post-item-icon ${p.type || 'article'}">${icons[p.type] || '📝'}</div>
       <div class="post-item-info">
         <h4>${escHtml(p.title)}</h4>
-        <p class="post-item-meta">${p.tag||''} · ${p.date||''}</p>
+        <p class="post-item-meta">${p.tag || ''} · ${p.date || ''}</p>
       </div>
       <div class="post-item-actions">
         <button title="编辑" onclick="editPost('${p.id}')">✏️</button>
-        <button class="delete-btn" title="删除" onclick="deletePost('${p.filename}')">🗑️</button>
+        <button class="delete-btn" title="删除" onclick="deletePost('${p.id}')">🗑️</button>
       </div>
     </div>`).join('');
 }
@@ -1533,7 +1441,6 @@ function clearEditorFields() {
   document.getElementById('editorExcerpt').value = '';
   document.getElementById('editorVideoUrl').value = '';
   document.getElementById('editorCover').value = '';
-  document.getElementById('coverPreviewBox').style.display = 'none';
   document.getElementById('editorBody').value = '';
   document.getElementById('editorQuoteSource').value = '';
   toggleEditorFields();
@@ -1545,233 +1452,174 @@ function toggleEditorFields() {
   document.getElementById('videoUrlField').style.display = isVideo ? '' : 'none';
   document.getElementById('quoteSourceField').style.display = type === 'quote' ? '' : 'none';
   document.getElementById('coverField').style.display = isVideo ? 'none' : '';
-  if (isVideo) document.getElementById('videoUrlHint').textContent = '💡 打开 YouTube → 点分享 → 复制链接 → 粘贴到这里';
+
+  // Update hint text
+  if (isVideo) {
+    document.getElementById('videoUrlHint').textContent = '💡 打开 YouTube → 点分享 → 复制链接 → 粘贴到这里';
+  }
+
+  // Auto-set tag for video types
   if (type === 'youtube') document.getElementById('editorTag').value = 'YouTube';
-  document.getElementById('editorBody').placeholder = isVideo ? '视频的文字描述或补充说明（可选）...' : type === 'quote' ? '输入你的灵感短句...' : '在这里写你的文章...\n\n支持简单的 Markdown 格式：\n## 标题\n**粗体** *斜体*\n> 引用\n![图片](images/photo.jpg)';
-  document.getElementById('editorBody').style.minHeight = (isVideo || type === 'quote') ? '120px' : '300px';
+
+  if (type === 'quote') {
+    document.getElementById('bodyField').style.display = '';
+    document.getElementById('editorBody').placeholder = '输入你的灵感短句...';
+    document.getElementById('editorBody').style.minHeight = '120px';
+  } else {
+    document.getElementById('bodyField').style.display = '';
+    document.getElementById('editorBody').placeholder = isVideo
+      ? '视频的文字描述或补充说明（可选）...'
+      : '在这里写你的文章...\n\n支持简单的 Markdown 格式：\n## 标题\n**粗体** *斜体*\n> 引用\n![图片](链接)';
+    document.getElementById('editorBody').style.minHeight = isVideo ? '120px' : '300px';
+  }
 }
 
-async function editPost(id) {
-  const posts = await getPosts();
-  const post = posts.find(p => p.id === id);
+function editPost(id) {
+  const post = getPosts().find(p => p.id === id);
   if (!post) return;
-  document.getElementById('editorId').value = post.filename;
+  document.getElementById('editorId').value = post.id;
   document.getElementById('editorType').value = post.type || 'article';
   document.getElementById('editorTitle').value = post.title || '';
   document.getElementById('editorTag').value = post.tag || 'AI极简';
   document.getElementById('editorExcerpt').value = post.excerpt || '';
-  document.getElementById('editorVideoUrl').value = post.video_url || post.videoUrl || '';
+  document.getElementById('editorVideoUrl').value = post.videoUrl || '';
   document.getElementById('editorCover').value = post.cover || '';
-  previewCover(post.cover || '');
-  document.getElementById('editorBody').value = post._body || '';
+  document.getElementById('editorBody').value = post.body || '';
   document.getElementById('editorQuoteSource').value = post.quoteSource || '';
   toggleEditorFields();
   switchAdminTab('editor', document.querySelectorAll('.admin-tab')[1]);
 }
 
-// Build .md file content from editor fields
-function buildMdContent(data) {
-  const lines = ['---'];
-  lines.push(`title: ${data.title}`);
-  lines.push(`tag: ${data.tag}`);
-  if (data.excerpt) lines.push(`excerpt: ${data.excerpt}`);
-  lines.push(`date: ${data.date}`);
-  lines.push(`type: ${data.type}`);
-  if (data.cover) lines.push(`cover: ${data.cover}`);
-  if (data.videoUrl) lines.push(`video_url: ${data.videoUrl}`);
-  if (data.quoteSource) lines.push(`quoteSource: ${data.quoteSource}`);
-  lines.push('---');
-  lines.push('');
-  lines.push(data.body);
-  return lines.join('\n');
-}
-
-// Save post to GitHub via API
-async function savePostToGitHub(filename, content, existingSha) {
-  const cfg = getConfig();
-  if (!cfg.user || !cfg.repo || !cfg.token) throw new Error('NO_CONFIG');
-  const url = `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/posts/${filename}`;
-  const body = { message: `Update: ${filename}`, content: btoa(unescape(encodeURIComponent(content))) };
-  if (existingSha) body.sha = existingSha;
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: { 'Authorization': `token ${cfg.token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  });
-  if (res.status === 401) { const e = await res.json().catch(()=>{}); throw new Error('UNAUTHORIZED: ' + (e?.message||'')); }
-  if (!res.ok) { const e = await res.json().catch(()=>{}); throw new Error('SAVE_FAILED ' + res.status + ': ' + (e?.message||'')); }
-  return await res.json();
-}
-
-async function deleteFromGitHub(filename, sha) {
-  const cfg = getConfig();
-  const url = `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/posts/${filename}`;
-  const res = await fetch(url, {
-    method: 'DELETE',
-    headers: { 'Authorization': `token ${cfg.token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: `Delete: ${filename}`, sha })
-  });
-  if (!res.ok) throw new Error('DELETE_FAILED');
-}
-
-let _isSaving = false;
-async function savePost() {
-  if (_isSaving) return;
+function savePost() {
   const title = document.getElementById('editorTitle').value.trim();
   if (!title) { alert('请输入标题'); return; }
 
-  const cfg = getConfig();
-  if (!cfg.token) {
-    alert('请先在「设置」里填写 GitHub Token，才能发布文章');
-    switchAdminTab('settings', document.querySelectorAll('.admin-tab')[2]);
-    return;
-  }
+  const posts = getPosts();
+  const id = document.getElementById('editorId').value || 'post_' + Date.now();
+  const now = new Date().toISOString().slice(0, 10);
 
-  _isSaving = true;
-  const btn = document.querySelector('.btn-publish');
-  btn.textContent = '发布中...'; btn.disabled = true;
-
-  const existingFilename = document.getElementById('editorId').value;
-  const now = new Date().toISOString().slice(0,10);
-  const safeTitle = title.replace(/[\\/:*?"<>|]/g,'').trim().slice(0,50);
-  const filename = existingFilename || `${now}-${safeTitle}.md`;
-
-  const data = {
-    title, tag: document.getElementById('editorTag').value,
-    excerpt: document.getElementById('editorExcerpt').value.trim(),
-    date: existingFilename ? (await getPosts()).find(p=>p.filename===existingFilename)?.date || now : now,
+  const postData = {
+    id,
     type: document.getElementById('editorType').value,
+    title,
+    tag: document.getElementById('editorTag').value,
+    excerpt: document.getElementById('editorExcerpt').value.trim(),
+    date: now,
     cover: document.getElementById('editorCover').value.trim(),
     videoUrl: document.getElementById('editorVideoUrl').value.trim(),
     body: document.getElementById('editorBody').value,
     quoteSource: document.getElementById('editorQuoteSource').value.trim(),
   };
 
-  const content = buildMdContent(data);
-
-  // Get existing SHA if updating
-  let existingSha;
-  if (existingFilename) {
-    const posts = await getPosts();
-    // Need to get SHA from GitHub API
-    try {
-      const r = await fetch(`https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/posts/${existingFilename}`, {
-        headers: { 'Authorization': `token ${cfg.token}` }
-      });
-      if (r.ok) { const d = await r.json(); existingSha = d.sha; }
-    } catch {}
+  const idx = posts.findIndex(p => p.id === id);
+  if (idx > -1) {
+    postData.date = posts[idx].date;
+    posts[idx] = postData;
+  } else {
+    posts.push(postData);
   }
 
-  try {
-    await savePostToGitHub(filename, content, existingSha);
-    _isSaving = false;
-    btn.textContent = '✓ 确认发布'; btn.disabled = false;
-    _cache = null;
-    const goView = confirm('发布成功 🌸\n\n点击「确定」查看文章效果\n点击「取消」留在后台继续编辑');
-    if (goView) { closeAdmin(); }
-    else { switchAdminTab('posts', document.querySelectorAll('.admin-tab')[0]); renderPostsList(); }
-  } catch(e) {
-    _isSaving = false;
-    btn.textContent = '✓ 确认发布'; btn.disabled = false;
-    if (e.message === 'NO_CONFIG') alert('请先在「设置」里填写 GitHub Token');
-    else if (e.message === 'UNAUTHORIZED') alert('GitHub Token 无效或已过期，请在设置里更新');
-    else alert('发布失败：' + e.message);
+  savePosts(posts);
+  
+  // Show success confirmation with option to view
+  const goView = confirm('发布成功 🌸\n\n点击「确定」查看文章效果\n点击「取消」留在后台继续编辑');
+  if (goView) {
+    closeAdmin();
+    renderContent();
+    setTimeout(() => {
+      document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  } else {
+    switchAdminTab('posts', document.querySelectorAll('.admin-tab')[0]);
+    renderPostsList();
   }
 }
 
 function previewPost() {
   const title = document.getElementById('editorTitle').value.trim();
   if (!title) { alert('请先输入标题'); return; }
+  
+  // Temporarily save and open preview
   const tempPost = {
+    id: 'preview_temp',
     type: document.getElementById('editorType').value,
-    title, tag: document.getElementById('editorTag').value,
-    date: new Date().toISOString().slice(0,10),
+    title,
+    tag: document.getElementById('editorTag').value,
+    excerpt: document.getElementById('editorExcerpt').value.trim(),
+    date: new Date().toISOString().slice(0, 10),
+    cover: document.getElementById('editorCover').value.trim(),
     videoUrl: document.getElementById('editorVideoUrl').value.trim(),
-    _body: document.getElementById('editorBody').value,
+    body: document.getElementById('editorBody').value,
     quoteSource: document.getElementById('editorQuoteSource').value.trim(),
   };
+  
+  // Use openPost logic but with temp data
   const body = document.getElementById('readerBody');
-  let html = `<h1>${escHtml(tempPost.title)}</h1><div class="article-meta-top">${tempPost.tag||''} · ${tempPost.date} · 预览模式</div>`;
+  let html = `<h1>${escHtml(tempPost.title)}</h1>`;
+  html += `<div class="article-meta-top">${tempPost.tag || ''} · ${tempPost.date} · 预览模式</div>`;
+  
   const videoUrl = tempPost.videoUrl || '';
   if (tempPost.type === 'youtube' && videoUrl) {
     const ytId = extractYoutubeId(videoUrl);
-    if (ytId) html += `<div class="video-embed-wrapper"><iframe width="100%" height="400" style="max-width:640px;border:none;border-radius:12px;" src="https://www.youtube.com/embed/${ytId}" allowfullscreen></iframe></div>`;
+    if (ytId) {
+      html += `<div class="video-embed-wrapper"><iframe width="100%" height="400" style="max-width:640px;border:none;border-radius:12px;" src="https://www.youtube.com/embed/${ytId}" allowfullscreen></iframe></div>`;
+    }
   }
   if (tempPost.type === 'quote') {
-    html += `<blockquote style="font-size:1.3rem;line-height:2;color:var(--ink-light);border-left:3px solid var(--gold);padding-left:20px;margin:32px 0;font-style:italic;">${renderMd(tempPost._body||'')}</blockquote>`;
+    html += `<blockquote style="font-size:1.3rem;line-height:2;color:var(--ink-light);border-left:3px solid var(--gold);padding-left:20px;margin:32px 0;font-style:italic;">${renderMd(tempPost.body || '')}</blockquote>`;
     if (tempPost.quoteSource) html += `<p style="text-align:right;color:var(--sage);font-size:0.9rem;">${escHtml(tempPost.quoteSource)}</p>`;
-  } else { html += renderMd(tempPost._body||''); }
+  } else {
+    html += renderMd(tempPost.body || '');
+  }
+  
   body.innerHTML = html;
   document.getElementById('readerModal').classList.add('active');
 }
 
-async function deletePost(filename) {
+function deletePost(id) {
   if (!confirm('确定删除这篇内容？')) return;
-  const cfg = getConfig();
-  if (!cfg.token) { alert('请先在「设置」里填写 GitHub Token'); return; }
-  try {
-    const r = await fetch(`https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/posts/${filename}`, {
-      headers: { 'Authorization': `token ${cfg.token}` }
-    });
-    if (!r.ok) throw new Error('找不到文件');
-    const d = await r.json();
-    await deleteFromGitHub(filename, d.sha);
-    _cache = null;
-    renderPostsList();
-  } catch(e) { alert('删除失败：' + e.message); }
+  const posts = getPosts().filter(p => p.id !== id);
+  savePosts(posts);
+  renderPostsList();
 }
 
-function cancelEditor() { switchAdminTab('posts', document.querySelectorAll('.admin-tab')[0]); }
+function cancelEditor() {
+  switchAdminTab('posts', document.querySelectorAll('.admin-tab')[0]);
+}
 
+// Live URL check
 function checkVideoUrl() {
   const url = document.getElementById('editorVideoUrl').value.trim();
   const status = document.getElementById('videoUrlStatus');
+  
   if (!url) { status.style.display = 'none'; return; }
+  
   status.style.display = 'block';
   const ytId = extractYoutubeId(url);
-  if (ytId) { status.innerHTML = '✅ YouTube 视频已识别，可以播放'; status.style.color = 'var(--sage-dark)'; }
-  else { status.innerHTML = '⚠️ 无法识别链接，请检查格式'; status.style.color = '#c0392b'; }
+  if (ytId) {
+    status.innerHTML = '✅ YouTube 视频已识别，可以播放';
+    status.style.color = 'var(--sage-dark)';
+  } else {
+    status.innerHTML = '⚠️ 无法识别链接，请检查格式';
+    status.style.color = '#c0392b';
+  }
 }
 
+// Markdown toolbar insert
 function insertMd(before, after) {
   const ta = document.getElementById('editorBody');
-  const s = ta.selectionStart, e = ta.selectionEnd;
-  const sel = ta.value.substring(s,e);
-  ta.value = ta.value.substring(0,s) + before + sel + after + ta.value.substring(e);
-  ta.focus(); ta.selectionStart = s+before.length; ta.selectionEnd = s+before.length+sel.length;
-}
-
-function previewCover(val) {
-  const box = document.getElementById('coverPreviewBox');
-  const img = document.getElementById('coverPreviewImg');
-  const err = document.getElementById('coverPreviewErr');
-  if (!val) { box.style.display = 'none'; return; }
-  box.style.display = 'block';
-  err.style.display = 'none';
-  img.style.display = 'block';
-  // Build full URL for preview
-  const cfg = getConfig();
-  const src = val.startsWith('http') ? val
-    : (cfg.user && cfg.repo ? `https://raw.githubusercontent.com/${cfg.user}/${cfg.repo}/main/${val}` : val);
-  img.src = src;
-  img.onerror = () => { img.style.display = 'none'; err.style.display = 'block'; };
-  img.onload  = () => { img.style.display = 'block'; err.style.display = 'none'; };
+  const start = ta.selectionStart;
+  const end = ta.selectionEnd;
+  const sel = ta.value.substring(start, end);
+  ta.value = ta.value.substring(0, start) + before + sel + after + ta.value.substring(end);
+  ta.focus();
+  ta.selectionStart = start + before.length;
+  ta.selectionEnd = start + before.length + sel.length;
 }
 
 // ============================================================
 // ADMIN — SETTINGS
 // ============================================================
-function saveGithubSettings() {
-  const user  = document.getElementById('ghUser').value.trim();
-  const repo  = document.getElementById('ghRepo').value.trim();
-  const token = document.getElementById('ghToken').value.trim();
-  if (!user || !repo) { alert('请填写用户名和仓库名'); return; }
-  saveConfig({ user, repo, token });
-  _cache = null;
-  alert('设置已保存 ✓\n\n' + (token ? '已填写 Token，可以发布文章' : '⚠️ 未填写 Token，只能读取文章，无法发布'));
-  renderPostsList();
-}
-
 function changePassword() {
   const np = document.getElementById('newPassword').value;
   if (!np || np.length < 3) { alert('密码至少3个字符'); return; }
@@ -1781,29 +1629,65 @@ function changePassword() {
 }
 
 function exportData() {
-  getPosts().then(posts => {
-    const data = JSON.stringify(posts, null, 2);
-    const blob = new Blob([data], { type:'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'blossom_posts_' + new Date().toISOString().slice(0,10) + '.json';
-    a.click(); URL.revokeObjectURL(url);
-  });
+  const data = JSON.stringify(getPosts(), null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'blossom_posts_' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
+function importData() {
+  document.getElementById('importInput').click();
+}
+
+function handleImport(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (Array.isArray(data)) {
+        const existing = getPosts();
+        const merged = [...existing, ...data.filter(d => !existing.find(e => e.id === d.id))];
+        savePosts(merged);
+        alert('导入成功 ✓ 共 ' + data.length + ' 篇');
+        renderPostsList();
+      }
+    } catch { alert('文件格式错误'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+function clearAllData() {
+  if (!confirm('⚠️ 确定要清空所有内容？此操作不可撤销！')) return;
+  if (!confirm('再次确认：清空后无法恢复。继续？')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  renderPostsList();
+  alert('已清空 ✓');
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
 function escHtml(str) {
-  if (!str) return '';
-  const d = document.createElement('div');
-  d.textContent = str; return d.innerHTML;
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
 }
 
+// Close modals on overlay click
 document.getElementById('readerModal').addEventListener('click', function(e) {
   if (e.target === this) closeReader();
 });
-document.getElementById('loginPassword').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') doLogin();
-});
 
+// ============================================================
+// INIT
+// ============================================================
 renderContent();
 </script>
 </body>
