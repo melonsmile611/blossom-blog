@@ -294,8 +294,9 @@
   <!-- minimal markdown renderer (no external dep) -->
   <script>
   // ── CONFIG ──────────────────────────────────────────
-  // 只需改这一行，填你的 GitHub 用户名/仓库名
   const GITHUB_REPO = 'melonsmile611/blossom-blog';
+  // 自动检测是否在子目录下（github.io/repo 情况），自定义域名时为空
+  const BASE_PATH = location.hostname.includes('github.io') ? '/blossom-blog' : '';
   // ────────────────────────────────────────────────────
 
   const homeView = document.getElementById('home-view');
@@ -399,7 +400,7 @@
   // ── Load & display a post ──
   async function loadPost(filename) {
     try {
-      const res = await fetch(`posts/${encodeURIComponent(filename)}`);
+      const res = await fetch(`${BASE_PATH}/posts/${encodeURIComponent(filename)}`);
       if (!res.ok) throw new Error('not found');
       const raw = await res.text();
       const { fm, body } = parseFrontMatter(raw);
@@ -452,7 +453,7 @@
       // 读每篇文章的 front matter 获取标题和 tag
       const items = await Promise.all(mdFiles.map(async filename => {
         try {
-          const r = await fetch(`posts/${encodeURIComponent(filename)}`);
+          const r = await fetch(`${BASE_PATH}/posts/${encodeURIComponent(filename)}`);
           const raw = await r.text();
           const { fm } = parseFrontMatter(raw);
           const { date, slug } = parseName(filename);
