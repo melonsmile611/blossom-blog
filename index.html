@@ -1,110 +1,476 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blossom Like Crocus — 如番红花绽放</title>
-<!-- 字体异步加载，不阻塞页面渲染 -->
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"></noscript>
-<style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --cream: #FAF7F2;
-  --warm-white: #FFFDF9;
-  --sage: #8B9E7E;
-  --sage-light: #C5D4B8;
-  --sage-dark: #5E7352;
-  --earth: #A0876C;
-  --earth-light: #C8B9A6;
-  --ink: #2C2C2C;
-  --ink-light: #6B6B6B;
-  --petal: #E8C4B8;
-  --petal-light: #F5E6DF;
-  --gold: #C9A96E;
-  --gold-light: #E8D5A8;
-  --border: rgba(139,158,126,0.15);
-  --shadow: rgba(44,44,44,0.06);
-  --font-display: 'Cormorant Garamond', 'Noto Serif SC', serif;
-  --font-body: 'Lora', 'Noto Serif SC', serif;
-  --font-cn: 'Noto Serif SC', serif;
-  --radius: 12px;
-  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--ink);
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 18px 40px;
-  display: flex; justify-content: space-between; align-items: center;
-  background: rgba(250,247,242,0.85);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: var(--transition);
-}
-nav.scrolled { padding: 12px 40px; box-shadow: 0 2px 20px var(--shadow); }
-.nav-logo {
-  font-family: var(--font-display);
-  font-size: 1.3rem; font-weight: 300;
-  color: var(--sage-dark);
-  letter-spacing: 0.02em;
-  cursor: pointer;
-}
-.nav-logo span { color: var(--earth); font-style: italic; }
-.nav-links { display: flex; gap: 32px; align-items: center; }
-.nav-links a {
-  font-family: var(--font-cn);
-  font-size: 0.82rem; font-weight: 400;
-  color: var(--ink-light);
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  transition: var(--transition);
-  position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px; background: var(--sage);
-  transition: var(--transition);
-}
-.nav-links a:hover { color: var(--sage-dark); }
-.nav-links a:hover::after { width: 100%; }
-.nav-admin-btn {
-  background: var(--sage); color: white !important;
-  padding: 6px 16px; border-radius: 20px;
-  font-size: 0.75rem !important; letter-spacing: 0.08em !important;
-}
-.nav-admin-btn::after { display: none !important; }
-.nav-admin-btn:hover { background: var(--sage-dark) !important; color: white !important; }
-
-.hero {
-  min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  text-align: center; padding: 120px 24px 80px;
-  position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(200,185,166,0.15) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 30%, rgba(197,212,184,0.12) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 80%, rgba(232,196,184,0.1) 0%, transparent 50%);
   pointer-events: none;
 }
 .hero-tag {
   font-family: var(--font-display);
-  font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase;
+  font-size: 0.8rem; letter-spacing: 0.35em; text-transform: <!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blossom Like Crocus — 如番红花绽放</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #faf7f2;
+      --ink: #1c1a17;
+      --muted: #7a7066;
+      --accent: #b5815a;
+      --rule: #e2ddd7;
+      --serif: 'Lora', 'Noto Serif SC', serif;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--serif);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-brand {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 3.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-en {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .hero-en em { font-style: normal; color: var(--accent); }
+    .hero-zh {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .hero-verse {
+      margin: 2.5rem auto 0;
+      max-width: 34rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── POST LIST ── */
+    .section-label {
+      margin: 3.5rem 0 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .post-list { list-style: none; }
+    .post-item {
+      border-top: 1px solid var(--rule);
+      padding: 1.3rem 0;
+    }
+    .post-item:last-child { border-bottom: 1px solid var(--rule); }
+
+    .post-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .post-title {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+    .post-link:hover .post-title { color: var(--accent); }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .post-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .post-date {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      font-style: italic;
+    }
+
+    /* ── LOADING / EMPTY STATE ── */
+    .state-msg {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* ── POST VIEW ── */
+    #post-view { display: none; }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 2rem 0 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: var(--serif);
+      transition: color 0.2s;
+    }
+    .back-btn:hover { color: var(--ink); }
+
+    .post-header {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .post-header-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .post-header-title {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    .post-header-date {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .post-cover {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      margin: 2rem 0;
+      display: block;
+    }
+    .post-body {
+      padding: 2rem 0 5rem;
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+    .post-body p { margin-bottom: 1.4em; }
+    .post-body h1, .post-body h2, .post-body h3 {
+      margin: 2em 0 0.6em;
+      font-weight: 500;
+    }
+    .post-body blockquote {
+      border-left: 2px solid var(--accent);
+      padding-left: 1.2em;
+      margin: 1.5em 0;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .post-body img {
+      max-width: 100%;
+      margin: 1.5em 0;
+      display: block;
+    }
+    .post-body a { color: var(--accent); }
+    .post-body code {
+      background: var(--rule);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-size: 0.88em;
+    }
+    .post-body ul, .post-body ol {
+      padding-left: 1.4em;
+      margin-bottom: 1.2em;
+    }
+    .post-body li { margin-bottom: 0.4em; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-brand" href="#" id="nav-home">Blossom Like Crocus</a>
+    <div class="nav-links">
+      <a href="#" id="nav-posts">文章</a>
+      <a href="#about">关于</a>
+    </div>
+  </nav>
+
+  <!-- HOME VIEW -->
+  <div id="home-view">
+    <div class="hero">
+      <div class="hero-en">Blossom like <em>Crocus.</em></div>
+      <div class="hero-zh">如番红花绽放 — 信仰中生长，恩典里盛开</div>
+      <div class="hero-verse">
+        「旷野和干旱之地必然欢喜，<br>
+        沙漠也必快乐，又像玫瑰开花。」<br>
+        — 以赛亚书 35:1
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="section-label">最新文章</div>
+      <ul class="post-list" id="post-list">
+        <li class="state-msg" id="loading-msg">加载中…</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- POST VIEW -->
+  <div id="post-view">
+    <div class="container">
+      <button class="back-btn" id="back-btn">← 返回</button>
+      <div class="post-header">
+        <div class="post-header-tag" id="pv-tag"></div>
+        <h1 class="post-header-title" id="pv-title"></h1>
+        <div class="post-header-date" id="pv-date"></div>
+      </div>
+      <img class="post-cover" id="pv-cover" src="" alt="" style="display:none" />
+      <div class="post-body" id="pv-body"></div>
+    </div>
+  </div>
+
+  <footer>© 2026 Blossom Like Crocus. 如番红花绽放.</footer>
+
+  <!-- minimal markdown renderer (no external dep) -->
+  <script>
+  // ── CONFIG ──────────────────────────────────────────
+  // Posts are .md files in /posts/
+  // Format: YYYY-MM-DD-slug.md
+  // Front matter (optional YAML block):
+  //   ---
+  //   title: 标题
+  //   tag: Faith
+  //   image: images/cover.jpg
+  //   ---
+  // Images go in /images/
+
+  const POST_LIST = [
+    // Add your post filenames here, newest first:
+    // "2026-04-16-first-time-web.md",
+  ];
+  // ────────────────────────────────────────────────────
+
+  const homeView = document.getElementById('home-view');
+  const postView = document.getElementById('post-view');
+  const postList = document.getElementById('post-list');
+
+  function showHome() {
+    homeView.style.display = '';
+    postView.style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+  function showPost() {
+    homeView.style.display = 'none';
+    postView.style.display = '';
+    window.scrollTo(0, 0);
+  }
+
+  document.getElementById('back-btn').addEventListener('click', showHome);
+  document.getElementById('nav-home').addEventListener('click', e => { e.preventDefault(); showHome(); });
+  document.getElementById('nav-posts').addEventListener('click', e => { e.preventDefault(); showHome(); });
+
+  // ── Parse front matter ──
+  function parseFrontMatter(raw) {
+    const fm = {};
+    let body = raw;
+    if (raw.startsWith('---')) {
+      const end = raw.indexOf('---', 3);
+      if (end !== -1) {
+        const block = raw.slice(3, end).trim();
+        block.split('\n').forEach(line => {
+          const colon = line.indexOf(':');
+          if (colon > -1) {
+            const k = line.slice(0, colon).trim();
+            const v = line.slice(colon + 1).trim().replace(/^["']|["']$/g, '');
+            fm[k] = v;
+          }
+        });
+        body = raw.slice(end + 3).trim();
+      }
+    }
+    return { fm, body };
+  }
+
+  // ── Filename → date + slug ──
+  function parseName(filename) {
+    const m = filename.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
+    if (m) return { date: m[1], slug: m[2] };
+    return { date: '', slug: filename.replace('.md', '') };
+  }
+
+  // ── Tiny markdown → HTML ──
+  function mdToHtml(md) {
+    return md
+      .replace(/^#{3} (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^#{2} (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+      .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+      .replace(/^[-*] (.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>\n?)+/g, s => `<ul>${s}</ul>`)
+      .split(/\n{2,}/)
+      .map(p => {
+        if (/^<(h[1-3]|ul|blockquote)/.test(p.trim())) return p;
+        if (!p.trim()) return '';
+        return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+      })
+      .join('\n');
+  }
+
+  // ── Render post list ──
+  function renderList(items) {
+    if (items.length === 0) {
+      postList.innerHTML = '<li class="state-msg">暂无文章 — 在 posts/ 文件夹里添加 .md 文件后更新 POST_LIST</li>';
+      return;
+    }
+    postList.innerHTML = items.map(item => `
+      <li class="post-item">
+        <a class="post-link" href="#" data-file="${item.file}">
+          <span class="post-title">${item.title}</span>
+          <span class="post-meta">
+            ${item.tag ? `<span class="post-tag">${item.tag}</span>` : ''}
+            <span class="post-date">${item.date}</span>
+          </span>
+        </a>
+      </li>
+    `).join('');
+
+    postList.querySelectorAll('.post-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        loadPost(link.dataset.file);
+      });
+    });
+  }
+
+  // ── Load & display a post ──
+  async function loadPost(filename) {
+    try {
+      const res = await fetch(`posts/${filename}`);
+      if (!res.ok) throw new Error('not found');
+      const raw = await res.text();
+      const { fm, body } = parseFrontMatter(raw);
+      const { date } = parseName(filename);
+
+      document.getElementById('pv-tag').textContent = fm.tag || '';
+      document.getElementById('pv-title').textContent = fm.title || parseName(filename).slug;
+      document.getElementById('pv-date').textContent = fm.date || date;
+
+      const cover = document.getElementById('pv-cover');
+      if (fm.image) {
+        cover.src = fm.image;
+        cover.alt = fm.title || '';
+        cover.style.display = '';
+      } else {
+        cover.style.display = 'none';
+      }
+
+      document.getElementById('pv-body').innerHTML = mdToHtml(body);
+      showPost();
+    } catch (err) {
+      alert('文章加载失败：' + filename);
+    }
+  }
+
+  // ── Init: fetch metadata from listed files ──
+  async function init() {
+    if (POST_LIST.length === 0) {
+      renderList([]);
+      return;
+    }
+    const items = await Promise.all(POST_LIST.map(async filename => {
+      try {
+        const res = await fetch(`posts/${filename}`);
+        const raw = await res.text();
+        const { fm } = parseFrontMatter(raw);
+        const { date, slug } = parseName(filename);
+        return {
+          file: filename,
+          title: fm.title || slug,
+          tag: fm.tag || '',
+          date: fm.date || date,
+        };
+      } catch {
+        const { date, slug } = parseName(filename);
+        return { file: filename, title: slug, tag: '', date };
+      }
+    }));
+    renderList(items);
+  }
+
+  init();
+  </script>
+</body>
+</html>;
   color: var(--sage); margin-bottom: 32px;
   opacity: 0; animation: fadeUp 1s 0.3s forwards;
 }
