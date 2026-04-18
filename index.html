@@ -868,7 +868,7 @@ footer p {
 
 <!-- ============ NAVIGATION ============ -->
 <nav id="mainNav">
-  <div class="nav-logo" onclick="showPage('home')">Blossom<span>.</span></div>
+  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">Blossom<span>.</span></div>
   <div class="nav-links">
     <a href="#articles" onclick="filterByTopic('all')">文章</a>
     <a href="#topics">主题</a>
@@ -1150,8 +1150,6 @@ footer p {
   </div>
 </div>
 
-<input type="file" id="importInput" accept=".json" style="display:none" onchange="handleImport(event)">
-
 <script>
 // ============================================================
 // CONFIG — GitHub 仓库信息（存在 localStorage）
@@ -1272,7 +1270,6 @@ async function renderContent() {
   // Skeleton
   const skeletonList = [1,2,3,4,5].map(() => `
     <div class="list-item" style="pointer-events:none;">
-      <div class="list-thumb thumb-gradient" style="animation:shimmer 1.5s infinite;background:linear-gradient(90deg,#f0ede8 25%,#e8e4de 50%,#f0ede8 75%);background-size:200% 100%;"></div>
       <div class="list-info">
         <div style="height:16px;background:#f0ede8;border-radius:4px;width:70%;margin-bottom:8px;"></div>
         <div style="height:12px;background:#f0ede8;border-radius:4px;width:45%;"></div>
@@ -1488,7 +1485,6 @@ function switchAdminTab(tab, btn) {
   if (el) { el.style.display = 'block'; el.classList.add('active'); }
   if (tab === 'posts') renderPostsList();
 }
-document.getElementById('postsPanel').style.display = 'block';
 
 // ============================================================
 // ADMIN — POSTS LIST
@@ -1598,8 +1594,8 @@ async function savePostToGitHub(filename, content, existingSha) {
     headers: { 'Authorization': `token ${cfg.token}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
   });
-  if (res.status === 401) { const e = await res.json().catch(()=>{}); throw new Error('UNAUTHORIZED: ' + (e?.message||'')); }
-  if (!res.ok) { const e = await res.json().catch(()=>{}); throw new Error('SAVE_FAILED ' + res.status + ': ' + (e?.message||'')); }
+  if (res.status === 401) throw new Error('UNAUTHORIZED');
+  if (!res.ok) throw new Error('SAVE_FAILED');
   return await res.json();
 }
 
