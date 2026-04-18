@@ -46,414 +46,32 @@
             font-size: 0.9rem;
         }
 
-        .help-box {
-            background: var(--crocus-pale);
-            padding: 1.5rem;
-            border-radius: 4px;
+        .tabs {
+            display: flex;
+            gap: 1rem;
             margin-bottom: 2rem;
-            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
-        .help-box h3 {
-            color: var(--crocus-purple);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-        }
-
-        .help-box ol {
-            margin-left: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        .help-box li {
-            margin-bottom: 0.3rem;
-        }
-
-        .help-box code {
-            background: white;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: white;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--crocus-purple);
-        }
-
-        textarea {
-            min-height: 250px;
-            resize: vertical;
-        }
-
-        .hint {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.3rem;
-        }
-
-        .tag-input {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .tag-item {
-            background: var(--crocus-pale);
-            color: var(--crocus-purple);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .tag-remove {
-            cursor: pointer;
-            opacity: 0.6;
-        }
-
-        .tag-remove:hover {
-            opacity: 1;
-        }
-
-        .tag-add {
-            background: transparent;
-            border: 1px dashed var(--border-light);
-            color: var(--text-muted);
-            cursor: pointer;
-        }
-
-        .btn {
-            background: var(--crocus-purple);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: opacity 0.3s;
-            margin-right: 1rem;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--crocus-purple);
-            border: 1px solid var(--crocus-purple);
-        }
-
-        .output-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--border-light);
-        }
-
-        .output-title {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .code-box {
-            background: #2C2428;
-            color: #F5F0F3;
-            padding: 1.5rem;
-            border-radius: 4px;
-            overflow-x: auto;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-
-        .filename {
-            background: var(--crocus-light);
-            color: var(--crocus-purple);
+        .tab {
             padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-
-        .copy-btn {
-            background: var(--crocus-light);
-            color: var(--crocus-purple);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            color: var(--text-muted);
             cursor: pointer;
-            margin-top: 1rem;
-            font-family: inherit;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
         }
 
-        .success {
-            color: #4a7c59;
-            margin-left: 1rem;
+        .tab.active {
+            color: var(--crocus-purple);
+            border-bottom-color: var(--crocus-purple);
         }
 
-        .image-preview {
-            max-width: 200px;
-            max-height: 150px;
-            margin-top: 0.5rem;
-            border-radius: 4px;
+        .tab-content {
             display: none;
         }
 
-        .image-preview.show {
+        .tab-content.active {
             display: block;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>🌸 发布新文章</h1>
-    <p class="subtitle">Blossom like crocus 文章管理系统</p>
-
-    <div class="help-box">
-        <h3>发布步骤</h3>
-        <ol>
-            <li>填写下方表单，点击"生成文章文件"</li>
-            <li>复制生成的 JSON 内容</li>
-            <li>在 GitHub 仓库的 <code>posts/</code> 文件夹下创建新文件</li>
-            <li>文件名格式：<code>YYYY-MM-DD.json</code>（如 2024-03-20.json）</li>
-            <li>粘贴内容，保存提交，博客首页自动更新</li>
-        </ol>
-    </div>
-
-    <div class="form-group">
-        <label>文章标题 *</label>
-        <input type="text" id="title" placeholder="例如：早春的第一抹紫色">
-    </div>
-
-    <div class="form-group">
-        <label>发布日期 *</label>
-        <input type="date" id="date">
-    </div>
-
-    <div class="form-group">
-        <label>图片链接（可选）</label>
-        <input type="text" id="image" placeholder="https://images.unsplash.com/...">
-        <p class="hint">推荐 Unsplash 图片，右键复制图片地址</p>
-        <img id="image-preview" class="image-preview" src="" alt="预览">
-    </div>
-
-    <div class="form-group">
-        <label>正文内容 *</label>
-        <textarea id="content" placeholder="在这里写文章正文...
-
-用空行分隔段落
-这样就是第二段"></textarea>
-        <p class="hint">用空行分隔段落，支持多段文字</p>
-    </div>
-
-    <div class="form-group">
-        <label>标签</label>
-        <div class="tag-input" id="tag-container">
-            <span class="tag-item tag-add" onclick="addTag()">+ 添加标签</span>
-        </div>
-    </div>
-
-    <div style="margin-top: 2rem;">
-        <button class="btn" onclick="generate()">生成文章文件</button>
-        <button class="btn btn-secondary" onclick="resetForm()">清空表单</button>
-    </div>
-
-    <div id="output" class="output-section" style="display: none;">
-        <div class="filename" id="filename">posts/2024-03-20.json</div>
-        <div class="code-box" id="code-content"></div>
-        <button class="copy-btn" onclick="copyCode()">复制内容</button>
-        <span id="copy-success" class="success" style="display: none;">已复制！</span>
-    </div>
-</div>
-
-<script>
-    let tags = [];
-    
-    // 设置默认日期为今天
-    document.getElementById('date').valueAsDate = new Date();
-
-    // 图片预览
-    document.getElementById('image').addEventListener('input', function(e) {
-        const url = e.target.value;
-        const preview = document.getElementById('image-preview');
-        if (url) {
-            preview.src = url;
-            preview.classList.add('show');
-        } else {
-            preview.classList.remove('show');
-        }
-    });
-
-    // 添加标签
-    function addTag() {
-        const name = prompt('输入标签名称（如：随笔、植物、生活）：');
-        if (name && !tags.includes(name)) {
-            tags.push(name);
-            renderTags();
-        }
-    }
-
-    // 删除标签
-    function removeTag(tag) {
-        tags = tags.filter(t => t !== tag);
-        renderTags();
-    }
-
-    // 渲染标签
-    function renderTags() {
-        const container = document.getElementById('tag-container');
-        container.innerHTML = tags.map(tag => `
-            <span class="tag-item">
-                ${tag}
-                <span class="tag-remove" onclick="removeTag('${tag}')">×</span>
-            </span>
-        `).join('') + '<span class="tag-item tag-add" onclick="addTag()">+ 添加标签</span>';
-    }
-
-    // 生成文章
-    function generate() {
-        const title = document.getElementById('title').value.trim();
-        const date = document.getElementById('date').value;
-        const image = document.getElementById('image').value.trim();
-        const content = document.getElementById('content').value.trim();
-
-        if (!title || !date || !content) {
-            alert('请填写标题、日期和正文');
-            return;
-        }
-
-        // 生成文件名
-        const filename = `posts/${date}.json`;
-        document.getElementById('filename').textContent = filename;
-
-        // 构建 JSON
-        const post = {
-            title: title,
-            date: date,
-            content: content
-        };
-
-        if (image) post.image = image;
-        if (tags.length) post.tags = tags;
-
-        // 显示输出
-        const jsonStr = JSON.stringify(post, null, 2);
-        document.getElementById('code-content').textContent = jsonStr;
-        document.getElementById('output').style.display = 'block';
-        document.getElementById('copy-success').style.display = 'none';
-        
-        // 滚动到输出区域
-        document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // 复制代码
-    function copyCode() {
-        const code = document.getElementById('code-content').textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            document.getElementById('copy-success').style.display = 'inline';
-            setTimeout(() => {
-                document.getElementById('copy-success').style.display = 'none';
-            }, 2000);
-        });
-    }
-
-    // 清空表单
-    function resetForm() {
-        if (confirm('确定要清空所有内容吗？')) {
-            document.getElementById('title').value = '';
-            document.getElementById('image').value = '';
-            document.getElementById('content').value = '';
-            document.getElementById('image-preview').classList.remove('show');
-            tags = [];
-            renderTags();
-            document.getElementById('output').style.display = 'none';
-        }
-    }
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>发布文章 - Blossom like crocus</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --crocus-purple: #6B4C7F;
-            --crocus-light: #E8D5E0;
-            --crocus-pale: #F5F0F3;
-            --text-dark: #2C2428;
-            --text-muted: #6B5B5B;
-            --border-light: #E0D5D8;
-        }
-
-        body {
-            font-family: 'Georgia', 'Songti SC', serif;
-            background-color: #FAFAFA;
-            color: var(--text-dark);
-            line-height: 1.8;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 1.8rem;
-            font-weight: normal;
-            color: var(--crocus-purple);
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
         }
 
         .help-box {
@@ -572,11 +190,17 @@
             font-size: 1rem;
             font-family: inherit;
             transition: opacity 0.3s;
-            margin-right: 1rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
         }
 
         .btn:hover {
             opacity: 0.9;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
         .btn-secondary {
@@ -586,7 +210,7 @@
         }
 
         .output-section {
-            margin-top: 3rem;
+            margin-top: 2rem;
             padding-top: 2rem;
             border-top: 2px solid var(--border-light);
         }
@@ -607,6 +231,8 @@
             line-height: 1.6;
             white-space: pre-wrap;
             word-break: break-all;
+        max-height: 400px;
+            overflow-y: auto;
         }
 
         .filename {
@@ -619,20 +245,18 @@
             display: inline-block;
         }
 
-        .copy-btn {
-            background: var(--crocus-light);
-            color: var(--crocus-purple);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 1rem;
-            font-family: inherit;
+        .status {
+            font-size: 0.9rem;
+            margin-left: 1rem;
+            min-height: 1.5rem;
         }
 
-        .success {
+        .status.success {
             color: #4a7c59;
-            margin-left: 1rem;
+        }
+
+        .status.error {
+            color: #a66;
         }
 
         .image-preview {
@@ -646,6 +270,29 @@
         .image-preview.show {
             display: block;
         }
+
+        .token-input {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .token-input input {
+            flex: 1;
+        margin-bottom: 0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        padding: 0.5rem;
+        border: 1px dashed var(--border-light);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .token-input {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
@@ -654,68 +301,117 @@
     <h1>🌸 发布新文章</h1>
     <p class="subtitle">Blossom like crocus 文章管理系统</p>
 
-    <div class="help-box">
-        <h3>发布步骤</h3>
-        <ol>
-            <li>填写下方表单，点击"生成文章文件"</li>
-            <li>复制生成的 JSON 内容</li>
-            <li>在 GitHub 仓库的 <code>posts/</code> 文件夹下创建新文件</li>
-            <li>文件名格式：<code>YYYY-MM-DD.json</code>（如 2024-03-20.json）</li>
-            <li>粘贴内容，保存提交，博客首页自动更新</li>
-        </ol>
+    <div class="tabs">
+        <div class="tab active" onclick="switchTab('write')">写文章</div>
+        <div class="tab" onclick="switchTab('help')">使用说明</div>
+        <div class="tab" onclick="switchTab('settings')">设置 Token</div>
     </div>
 
-    <div class="form-group">
-        <label>文章标题 *</label>
-        <input type="text" id="title" placeholder="例如：早春的第一抹紫色">
-    </div>
-
-    <div class="form-group">
-        <label>发布日期 *</label>
-        <input type="date" id="date">
-    </div>
-
-    <div class="form-group">
-        <label>图片链接（可选）</label>
-        <input type="text" id="image" placeholder="https://images.unsplash.com/...">
-        <p class="hint">推荐 Unsplash 图片，右键复制图片地址</p>
-        <img id="image-preview" class="image-preview" src="" alt="预览">
-    </div>
-
-    <div class="form-group">
-        <label>正文内容 *</label>
-        <textarea id="content" placeholder="在这里写文章正文...
-
-用空行分隔段落
-这样就是第二段"></textarea>
-        <p class="hint">用空行分隔段落，支持多段文字</p>
-    </div>
-
-    <div class="form-group">
-        <label>标签</label>
-        <div class="tag-input" id="tag-container">
-            <span class="tag-item tag-add" onclick="addTag()">+ 添加标签</span>
+    <!-- 设置 Token -->
+    <div id="settings" class="tab-content">
+        <div class="help-box">
+            <h3>配置 GitHub Token</h3>
+            <p>用于一键推送到仓库（仅存储在本地浏览器）</p>
+            <div class="token-input">
+                <input type="text" id="token-input" placeholder="ghp_xxxxxxxxxxxx">
+                <button class="btn" onclick="saveToken()">保存 Token</button>
+            </div>
+            <p class="hint">Token 仅保存在浏览器本地存储，不会被上传到任何地方</p>
+            <p class="hint">获取方式：GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → 勾选 repo 权限</p>
         </div>
     </div>
 
-    <div style="margin-top: 2rem;">
-        <button class="btn" onclick="generate()">生成文章文件</button>
-        <button class="btn btn-secondary" onclick="resetForm()">清空表单</button>
+    <!-- 使用说明 -->
+    <div id="help" class="tab-content" style="display: none;">
+        <div class="help-box">
+            <h3>发布步骤</h3>
+            <ol>
+                <li>在"写文章"标签填写标题、日期、正文</li>
+                <li>点击"生成文章文件"，复制 JSON 内容或一键推送</li>
+                <li>如果手动上传：在 GitHub 仓库的 <code>posts/</code> 文件夹创建 <code>YYYY-MM-DD.json</code></li>
+                <li>博客首页会自动加载新文章，按日期排序</li>
+            </ol>
+            <p><strong>三种发布方式：</strong></p>
+            <ul style="margin-left: 1.2rem; color: var(--text-muted);">
+                <li><strong>一键推送</strong>：配置 Token 后点击"推送到 GitHub"</li>
+                <li><strong>下载文件</strong>：点击"下载 JSON"，手动上传到 posts/ 文件夹</li>
+                <li><strong>复制粘贴</strong>：复制代码框内容，在 GitHub 新建文件粘贴</li>
+            </ul>
+        </div>
     </div>
 
-    <div id="output" class="output-section" style="display: none;">
-        <div class="filename" id="filename">posts/2024-03-20.json</div>
-        <div class="code-box" id="code-content"></div>
-        <button class="copy-btn" onclick="copyCode()">复制内容</button>
-        <span id="copy-success" class="success" style="display: none;">已复制！</span>
+    <!-- 写作表单 -->
+    <div id="write" class="tab-content active">
+        <div class="form-group">
+            <label>文章标题 *</label>
+            <input type="text" id="title" placeholder="例如：早春的第一抹紫色">
+        </div>
+
+        <div class="form-group">
+            <label>发布日期 *</label>
+            <input type="date" id="date">
+        </div>
+
+        <div class="form-group">
+            <label>图片链接（可选）</label>
+            <input type="text" id="image" placeholder="https://images.unsplash.com/...">
+            <p class="hint">推荐 Unsplash 图片，右键复制图片地址</p>
+            <img id="image-preview" class="image-preview" src="" alt="预览">
+        </div>
+
+        <div class="form-group">
+            <label>正文内容 *</label>
+            <textarea id="content" placeholder="在这里写文章正文...
+
+用空行分隔段落
+这样就是第二段"></textarea>
+            <p class="hint">用空行分隔段落，支持多段文字</p>
+        </div>
+
+        <div class="form-group">
+            <label>标签</label>
+            <div class="tag-input" id="tag-container">
+                <span class="tag-item tag-add" onclick="addTag()">+ 添加标签</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <button class="btn" onclick="generate()">生成文章文件</button>
+            <button class="btn btn-secondary" onclick="resetForm()">清空</button>
+        </div>
+
+        <div id="output" class="output-section" style="display: none;">
+            <div class="filename" id="filename">posts/2024-03-20.json</div>
+            <div class="code-box" id="code-content"></div>
+            
+            <button class="btn" onclick="copyCode()">复制 JSON</button>
+            <button class="btn" onclick="downloadJSON()" style="margin-left: 0.5rem;">下载 JSON</button>
+            <button class="btn" id="push-btn" onclick="pushToGitHub()" style="display: none;">推送到 GitHub</button>
+            
+            <div id="status" class="status"></div>
+        </div>
     </div>
 </div>
 
 <script>
+    // 配置
+    const CONFIG = {
+        owner: 'melonsmile611',  // 修改为你的用户名
+        repo: 'blossom-blog',      // 修改为你的仓库名
+        branch: 'main'
+    };
+
     let tags = [];
-    
-    // 设置默认日期为今天
+    let generatedContent = '';
+
+    // 初始化
     document.getElementById('date').valueAsDate = new Date();
+    
+    // 从本地存储读取 token
+    const savedToken = localStorage.getItem('github_token');
+    if (savedToken) {
+        document.getElementById('token-input').value = savedToken;
+    }
 
     // 图片预览
     document.getElementById('image').addEventListener('input', function(e) {
@@ -729,7 +425,7 @@
         }
     });
 
-    // 添加标签
+    // 标签管理
     function addTag() {
         const name = prompt('输入标签名称（如：随笔、植物、生活）：');
         if (name && !tags.includes(name)) {
@@ -738,13 +434,11 @@
         }
     }
 
-    // 删除标签
     function removeTag(tag) {
         tags = tags.filter(t => t !== tag);
         renderTags();
     }
 
-    // 渲染标签
     function renderTags() {
         const container = document.getElementById('tag-container');
         container.innerHTML = tags.map(tag => `
@@ -755,6 +449,31 @@
         `).join('') + '<span class="tag-item tag-add" onclick="addTag()">+ 添加标签</span>';
     }
 
+    // 切换标签页
+    function switchTab(tab) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById(tab).classList.add('active');
+        
+        // 特殊处理设置页
+        if (tab === 'settings') {
+            document.getElementById('push-btn').style.display = 
+                savedToken ? 'inline-block' : 'none';
+        }
+    }
+
+    // 保存 Token
+    function saveToken() {
+        const token = document.getElementById('token-input').value.trim();
+        if (token) {
+            localStorage.setItem('github_token', token);
+            alert('Token 已保存到本地');
+            document.getElementById('push-btn').style.display = 'inline-block';
+        }
+    }
+
     // 生成文章
     function generate() {
         const title = document.getElementById('title').value.trim();
@@ -763,43 +482,122 @@
         const content = document.getElementById('content').value.trim();
 
         if (!title || !date || !content) {
-            alert('请填写标题、日期和正文');
+            showStatus('请填写标题、日期和正文', 'error');
             return;
         }
 
-        // 生成文件名
         const filename = `posts/${date}.json`;
         document.getElementById('filename').textContent = filename;
 
-        // 构建 JSON
         const post = {
             title: title,
             date: date,
             content: content
         };
-
         if (image) post.image = image;
         if (tags.length) post.tags = tags;
 
-        // 显示输出
-        const jsonStr = JSON.stringify(post, null, 2);
-        document.getElementById('code-content').textContent = jsonStr;
+        generatedContent = JSON.stringify(post, null, 2);
+        document.getElementById('code-content').textContent = generatedContent;
         document.getElementById('output').style.display = 'block';
-        document.getElementById('copy-success').style.display = 'none';
+        document.getElementById('status').className = 'status';
         
-        // 滚动到输出区域
+        // 如果有 token，显示推送按钮
+        const token = localStorage.getItem('github_token');
+        if (token) {
+            document.getElementById('push-btn').style.display = 'inline-block';
+        }
+        
         document.getElementById('output').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // 复制代码
+    // 显示状态
+    function showStatus(msg, type = '') {
+        const status = document.getElementById('status');
+        status.textContent = msg;
+        status.className = 'status ' + type;
+        if (type === 'success') {
+            setTimeout(() => status.textContent = '', 3000);
+        }
+    }
+
+    // 复制 JSON
     function copyCode() {
-        const code = document.getElementById('code-content').textContent;
-        navigator.clipboard.writeText(code).then(() => {
-            document.getElementById('copy-success').style.display = 'inline';
-            setTimeout(() => {
-                document.getElementById('copy-success').style.display = 'none';
-            }, 2000);
+        navigator.clipboard.writeText(generatedContent).then(() => {
+            showStatus('已复制到剪贴板！', 'success');
         });
+    }
+
+    // 下载 JSON
+    function DownloadJSON() {
+        const date = document.getElementById('date').value;
+        const blob = new Blob([generatedContent], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${date}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        showStatus('文件已下载！', 'success');
+    }
+
+    // 推送到 GitHub
+    async function pushToGitHub() {
+        const token = localStorage.getItem('github_token');
+        if (!token) {
+            showStatus('请先配置 GitHub Token', 'error');
+            return;
+        }
+
+        const btn = document.getElementById('push-btn');
+        btn.disabled = true;
+        btn.textContent = '推送中...';
+
+        const filename = document.getElementById('filename').textContent;
+        const content = generatedContent;
+
+        try {
+            // 检查文件是否已存在
+            let sha = null;
+            try {
+                const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${filename}?ref=${CONFIG.branch}`, {
+                    headers: { 'Authorization': `token ${token}` }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    sha = data.sha;
+                }
+            } catch (e) {}
+
+            // 创建/更新文件
+            const body = {
+                message: `Add post: ${filename}`,
+                content: btoa(unescape(encodeURIComponent(content))),
+                branch: CONFIG.branch
+            };
+            if (sha) body.sha = sha;
+
+            const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${filename}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (res.ok) {
+                showStatus('✅ 推送成功！1-2 分钟后刷新博客查看', 'success');
+                btn.textContent = '推送到 GitHub';
+                btn.disabled = false;
+            } else {
+                throw new Error('推送失败');
+            }
+        } catch (err) {
+            showStatus('❌ 错误：' + err.message, 'error');
+            btn.disabled = false;
+            btn.textContent = '推送到 GitHub';
+        }
     }
 
     // 清空表单
@@ -812,6 +610,8 @@
             tags = [];
             renderTags();
             document.getElementById('output').style.display = 'none';
+            document.getElementById('status').className = 'status';
+        generatedContent = '';
         }
     }
 </script>
