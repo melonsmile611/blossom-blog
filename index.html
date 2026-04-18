@@ -294,20 +294,8 @@
   <!-- minimal markdown renderer (no external dep) -->
   <script>
   // ── CONFIG ──────────────────────────────────────────
-  // Posts are .md files in /posts/
-  // Format: YYYY-MM-DD-slug.md
-  // Front matter (optional YAML block):
-  //   ---
-  //   title: 标题
-  //   tag: Faith
-  //   image: images/cover.jpg
-  //   ---
-  // Images go in /images/
-
-  const POST_LIST = [
-    // Add your post filenames here, newest first:
-    // "2026-04-16-first-time-web.md",
-  ];
+  // 只需改这一行，填你的 GitHub 用户名/仓库名
+  const GITHUB_REPO = 'melonsmile611/blossom-blog';
   // ────────────────────────────────────────────────────
 
   const homeView = document.getElementById('home-view');
@@ -383,9 +371,11 @@
   // ── Render post list ──
   function renderList(items) {
     if (items.length === 0) {
-      postList.innerHTML = '<li class="state-msg">暂无文章 — 在 posts/ 文件夹里添加 .md 文件后更新 POST_LIST</li>';
+      postList.innerHTML = '<li class="state-msg">暂无文章 — 往 posts/ 文件夹上传 .md 文件即可</li>';
       return;
     }
+    // 按日期倒序
+    items.sort((a, b) => b.date.localeCompare(a.date));
     postList.innerHTML = items.map(item => `
       <li class="post-item">
         <a class="post-link" href="#" data-file="${item.file}">
@@ -409,7 +399,7 @@
   // ── Load & display a post ──
   async function loadPost(filename) {
     try {
-      const res = await fetch(`posts/${filename}`);
+      const res = await fetch(`posts/${encodeURIComponent(filename)}`);
       if (!res.ok) throw new Error('not found');
       const raw = await res.text();
       const { fm, body } = parseFrontMatter(raw);
@@ -435,30 +425,54 @@
     }
   }
 
-  // ── Init: fetch metadata from listed files ──
+  // ── Init: 用 GitHub API 自动扫描 posts/ 文件夹 ──
   async function init() {
-    if (POST_LIST.length === 0) {
-      renderList([]);
-      return;
-    }
-    const items = await Promise.all(POST_LIST.map(async filename => {
-      try {
-        const res = await fetch(`posts/${filename}`);
-        const raw = await res.text();
-        const { fm } = parseFrontMatter(raw);
-        const { date, slug } = parseName(filename);
-        return {
-          file: filename,
-          title: fm.title || slug,
-          tag: fm.tag || '',
-          date: fm.date || date,
-        };
-      } catch {
-        const { date, slug } = parseName(filename);
-        return { file: filename, title: slug, tag: '', date };
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/contents/posts`,
+        { headers: { 'Accept': 'application/vnd.github.v3+json' } }
+      );
+
+      if (!res.ok) {
+        // posts/ 文件夹不存在或请求失败
+        postList.innerHTML = '<li class="state-msg">暂无文章 — 在仓库里创建 posts/ 文件夹并上传 .md 文件即可</li>';
+        return;
       }
-    }));
-    renderList(items);
+
+      const files = await res.json();
+      const mdFiles = files
+        .filter(f => f.type === 'file' && f.name.endsWith('.md'))
+        .map(f => f.name);
+
+      if (mdFiles.length === 0) {
+        postList.innerHTML = '<li class="state-msg">暂无文章 — 往 posts/ 文件夹上传 .md 文件即可</li>';
+        return;
+      }
+
+      // 读每篇文章的 front matter 获取标题和 tag
+      const items = await Promise.all(mdFiles.map(async filename => {
+        try {
+          const r = await fetch(`posts/${encodeURIComponent(filename)}`);
+          const raw = await r.text();
+          const { fm } = parseFrontMatter(raw);
+          const { date, slug } = parseName(filename);
+          return {
+            file: filename,
+            title: fm.title || slug,
+            tag: fm.tag || '',
+            date: fm.date || date,
+          };
+        } catch {
+          const { date, slug } = parseName(filename);
+          return { file: filename, title: slug, tag: '', date };
+        }
+      }));
+
+      renderList(items);
+
+    } catch (err) {
+      postList.innerHTML = '<li class="state-msg">加载失败，请检查网络后刷新重试</li>';
+    }
   }
 
   init();
