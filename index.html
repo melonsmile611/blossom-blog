@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blossom like crocus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crocus-purple: #6B4C7F;
+            --crocus-light: #E8D5E0;
+            --crocus-pale: #F5F0F3;
+            --text-dark: #2C2428;
+            --text-muted: #6B5B5B;
+            --border-light: #E0D5D8;
+        }
+
+        body {
+            font-family: 'Georgia', 'Songti SC', 'Noto Serif SC', serif;
+            background-color: #FAFAFA;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--crocus-purple);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--crocus-purple);
+        }
+
+        header {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--crocus-pale) 0%, transparent 100%);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            color: var(--crocus-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 60vh;
+        }
+
+        .loading {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 4rem;
+            font-style: italic;
+        }
+
+        article {
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border-light);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        article:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .post-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            font-family: 'Courier New', monospace;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: normal;
+            margin-top: 0.5rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        h2 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        h2 a:hover {
+            color: var(--crocus-purple);
+        }
+
+        .post-image {
+            width: 100%;
+            height: auto;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .post-content {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .post-content p {
+            margin-bottom: 1.2rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--crocus-purple);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .read-more:hover {
+            border-bottom-color: var(--crocus-purple);
+        }
+
+        .tags {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--crocus-pale);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--crocus-light);
+            color: var(--crocus-purple);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .page-btn {
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--crocus-purple);
+            color: var(--crocus-purple);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-info {
+            padding: 0.5rem 1rem;
+            color: var(--text-muted);
+        }
+
+        .archive-list {
+            list-style: none;
+        }
+
+        .archive-year {
+            font-size: 1.3rem;
+            color: var(--crocus-purple);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .archive-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--crocus-pale);
+        }
+
+        .archive-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        .archive-title a {
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .archive-title a:hover {
+            color: var(--crocus-purple);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        .tag-cloud .tag {
+            font-size: 1rem;
+            padding: 0.5rem 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .error {
+            text-align: center;
+            color: #a66;
+            padding: 4rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .nav-links { gap: 1rem; }
+            main { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo" onclick="showHome()">Blossom like crocus</a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showHome()" class="active">首页</a></li>
+            <li><a href="#" onclick="showArchive()">归档</a></li>
+            <li><a href="#" onclick="showTags()">标签</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <h1>Blossom like crocus</h1>
+    <p class="subtitle">在寒冬之后，静静绽放</p>
+</header>
+
+<main id="content">
+    <div class="loading">正在加载文章...</div>
+</main>
+
+<footer>
+    <p>© 2024 Blossom like crocus · 如番红花般绽放</p>
+    <p style="margin-top: 0.5rem;">
+        <a href="https://github.com/melonsmile611/blossom-blog" target="_blank">GitHub</a> · 
+        <a href="#" onclick="showAdmin()">管理后台</a>
+    </p>
+</footer>
+
+<script>
+const POSTS_PER_PAGE = 5;
+let allPosts = [];
+let currentPage = 1;
+let currentTag = null;
+
+// 自动获取文章列表
+async function loadPosts() {
+    const content = document.getElementById('content');
+    content.innerHTML = '<div class="loading">正在加载文章...</div>';
+    
+    try {
+        let postFiles = await fetchPostList();
+        
+        const posts = [];
+        for (const file of postFiles) {
+            try {
+                const res = await fetch(file);
+                if (res.ok) {
+                    const post = await res.json();
+                    post.id = file.replace('posts/', '').replace('.json', '');
+                    posts.push(post);
+                }
+            } catch (e) {
+                console.log('Failed to load:', file);
+            }
+        }
+        
+        allPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        showHome();
+    } catch (err) {
+        document.getElementById('content').innerHTML = 
+            '<div class="error">加载失败：' + err.message + '</div>';
+    }
+}
+
+// 自动扫描 posts 文件夹（通过 GitHub API）
+async function fetchPostList() {
+    try {
+        const res = await fetch('https://api.github.com/repos/melonsmile611/blossom-blog/contents/posts?ref=main');
+        if (res.ok) {
+            const data = await res.json();
+            return data
+                .filter(item => item.name.endsWith('.json') && item.name !== 'index.json')
+                .map(item => 'posts/' + item.name);
+        }
+    } catch (e) {}
+    
+    return [];
+}
+
+function renderArticle(post, isDetail = false) {
+    const date = new Date(post.date);
+    const dateStr = `${date.getFullYear()}年${date.getMonth()+1}月${date.getDate()}日`;
+    
+    const imageHtml = post.image ? 
+        `<img src="${post.image}" alt="${post.title}" class="post-image">` : '';
+    
+    const tagsHtml = post.tags && post.tags.length ? 
+        `<div class="tags">${post.tags.map(t => 
+            `<a href="#" class="tag" onclick="event.preventDefault(); filterByTag('${t}');">${t}</a>`
+        ).join('')}</div>` : '';
+
+    const paragraphs = post.content.split('\n\n')
+        .filter(p => p.trim())
+        .map(p => `<p>${p.trim()}</p>`)
+        .join('');
+
+    const readMore = isDetail ? '' : 
+        `<a href="#" class="read-more" onclick="event.preventDefault(); showArticle('${post.id}');">继续阅读 →</a>`;
+
+    return `
+    <article>
+        <div class="post-header">
+            <span class="post-date">${dateStr}</span>
+            <h2><a href="#" onclick="event.preventDefault(); showArticle('${post.id}');">${post.title}</a></h2>
+        </div>
+        ${imageHtml}
+        <div class="post-content">${paragraphs}</div>
+        ${readMore}
+        ${tagsHtml}
+    </article>`;
+}
+
+function renderPagination(current, total, type) {
+    let html = '<div class="pagination">';
+    
+    if (current > 1) {
+        html += `<button class="page-btn" onclick="event.preventDefault(); ${type === 'home' ? `showHome(${current-1})` : `showTagPage('${currentTag}', ${current-1})`}">← 上一页</button>`;
+    } else {
+        html += `<button class="page-btn" disabled>← 上一页</button>`;
+    }
+    
+    html += `<span class="page-info">${current} / ${total}</span>`;
+    
+    if (current < total) {
+        html += `<button class="page-btn" onclick="event.preventDefault(); ${type === 'home' ? `showHome(${current+1})` : `showTagPage('${currentTag}', ${current+1})`}">下一页 →</button>`;
+    } else {
+        html += `<button class="page-btn" disabled>下一页 →</button>`;
+    }
+    
+    html += '</div>';
+    return html;
+}
+
+function showHome(page = 1) {
+    currentPage = page;
+    currentTag = null;
+    updateNavActive('home');
+    
+    if (allPosts.length === 0) {
+        document.getElementById('content').innerHTML = 
+            '<div class="loading">暂无文章<br><br>请在 posts/ 文件夹添加文章</div>';
+        return;
+    }
+    
+    const start = (page - 1) * POSTS_PER_PAGE;
+    const end = start + POSTS_PER_PAGE;
+    const pagePosts = allPosts.slice(start, end);
+    const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+
+    let html = '';
+    pagePosts.forEach(post => {
+        html += renderArticle(post);
+    });
+
+    if (totalPages > 1) {
+        html += renderPagination(page, totalPages, 'home');
+    }
+
+    document.getElementById('content').innerHTML = html;
+    window.scrollTo(0, 0);
+}
+
+function showArticle(id) {
+    const post = allPosts.find(p => p.id === id);
+    if (!post) return;
+    
+    updateNavActive('');
+    document.getElementById('content').innerHTML = renderArticle(post, true) + 
+        `<div style="margin-top: 2rem;"><a href="#" onclick="event.preventDefault(); showHome();" style="color: var(--crocus-purple);">← 返回首页</a></div>`;
+    window.scrollTo(0, 0);
+}
+
+function filterByTag(tag) {
+    currentTag = tag;
+    currentPage = 1;
+    showTagPage(tag, 1);
+}
+
+function showTagPage(tag, page) {
+    currentPage = page;
+    updateNavActive('tags');
+    
+    const filtered = allPosts.filter(p => p.tags && p.tags.includes(tag));
+    const start = (page - 1) * POSTS_PER_PAGE;
+    const end = start + POSTS_PER_PAGE;
+    const pagePosts = filtered.slice(start, end);
+    const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+
+    let html = `<div style="margin-bottom: 2rem; color: var(--text-muted);">
+        标签：${tag} 
+        <a href="#" onclick="event.preventDefault(); currentTag=null; showHome();" style="color: var(--crocus-purple); margin-left: 1rem;">清除筛选 ✕</a>
+    </div>`;
+    
+    pagePosts.forEach(post => {
+        html += renderArticle(post);
+    });
+
+    if (totalPages > 1) {
+        html += renderPagination(page, totalPages, 'tag');
+    }
+
+    document.getElementById('content').innerHTML = html;
+    window.scrollTo(0, 0);
+}
+
+function showArchive() {
+    updateNavActive('Archive');
+    
+    if (allPosts.length === 0) {
+        document.getElementById('content').innerHTML = '<div class="loading">暂无文章</div>';
+        return;
+    }
+    
+    const grouped = {};
+    allPosts.forEach(post => {
+        const date = new Date(post.date);
+        const year = date.getFullYear();
+        if (!grouped[year]) grouped[year] = [];
+        grouped[year].push(post);
+    });
+
+    let html = '<ul class="archive-list">';
+    Object.keys(grouped).sort((a, b) => b - a).forEach(year => {
+        html += `<li class="archive-year">${year}年</li>`;
+        grouped[year].forEach(post => {
+            const date = new Date(post.date);
+            const dateStr = `${date.getMonth()+1}月${date.getDate()}日`;
+            html += `
+            <li class="archive-item">
+                <span class="archive-date">${dateStr}</span>
+                <span class="archive-title"><a href="#" onclick="event.preventDefault(); showArticle('${post.id}');">${post.title}</a></span>
+            </li>`;
+        });
+    });
+    html += '</ul>';
+
+    document.getElementById('content').innerHTML = html;
+    window.scrollTo(0, 0);
+}
+
+function showTags() {
+    updateNavActive('Tags');
+    
+    if (allPosts.length === 0) {
+        document.getElementById('content').innerHTML = '<div class="loading">暂无文章</div>';
+        return;
+    }
+    
+    const tagCount = {};
+    allPosts.forEach(post => {
+        if (post.tags) {
+            post.tags.forEach(tag => {
+                tagCount[tag] = (tagCount[tag] || 0) + 1;
+            });
+        }
+    });
+
+    let html = '<div class="tag-cloud">';
+    Object.entries(tagCount).sort((a, b) => b[1] - a[1]).forEach(([tag, count]) => {
+        html += `<a href="#" class="tag" onclick="event.preventDefault(); filterByTag('${tag}');">${tag} (${count})</a>`;
+    });
+    html += '</div>';
+
+    document.getElementById('content').innerHTML = html;
+}
+
+function showAdmin() {
+    window.open('admin.html', '_blank');
+}
+
+function updateNavActive(active) {
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    if (active) {
+        const link = document.querySelector(`a[onclick*="${active}"]`);
+        if (link) link.classList.add('active');
+    }
+}
+
+// 初始化
+loadPosts();
+</script>
+
+</body>
+</html>
